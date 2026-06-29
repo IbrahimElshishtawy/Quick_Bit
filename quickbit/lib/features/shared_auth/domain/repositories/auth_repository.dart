@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/errors/failures.dart';
-import '../entities/user_entity.dart';
+import 'package:quickbit/core/errors/failures.dart';
+import 'package:quickbit/features/shared_auth/domain/entities/user_entity.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, UserEntity>> login(String email, String password);
