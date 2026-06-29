@@ -7,6 +7,8 @@ import 'package:quickbit/injection_container.dart';
 import 'package:quickbit/features/login/presentation/pages/login_page.dart';
 import 'package:quickbit/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:quickbit/features/onboarding/presentation/cubit/onboarding_state.dart';
+import 'package:quickbit/features/onboarding/presentation/widgets/onboarding_step_card.dart';
+import 'package:quickbit/features/onboarding/presentation/widgets/onboarding_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -117,119 +119,26 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           cubit.setPageIndex(index);
                         },
                         itemBuilder: (context, index) {
-                          return OnboardingSlideWidget(data: _slides[index]);
+                          return OnboardingStepCard(data: _slides[index]);
                         },
                       ),
                     ),
 
                     // Bottom Navigation Area
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppDimensions.lg,
-                        vertical: AppDimensions.xl,
-                      ),
-                      decoration: const BoxDecoration(
-                        color: AppColors.surfaceContainerLowest,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(AppDimensions.radius3Xl),
-                          topRight: Radius.circular(AppDimensions.radius3Xl),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x05000000),
-                            blurRadius: 40,
-                            offset: Offset(0, -8),
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // Dots Indicator
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              _slides.length,
-                              (index) => AnimatedContainer(
-                                duration: const Duration(milliseconds: 300),
-                                margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                                width: currentPage == index ? 24.0 : 8.0,
-                                height: 8.0,
-                                decoration: BoxDecoration(
-                                  color: currentPage == index
-                                      ? AppColors.primary
-                                      : AppColors.outlineVariant,
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: AppDimensions.xl),
-
-                          // Next/Get Started Button
-                          SizedBox(
-                            width: double.infinity,
-                            height: AppDimensions.buttonHeightLg,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primaryContainer,
-                                foregroundColor: AppColors.onPrimaryContainer,
-                                elevation: 4,
-                                shadowColor: AppColors.primaryContainer.withOpacity(0.4),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                              ),
-                              onPressed: () {
-                                if (currentPage < _slides.length - 1) {
-                                  _pageController.nextPage(
-                                    duration: const Duration(milliseconds: 400),
-                                    curve: Curves.easeInOut,
-                                  );
-                                } else {
-                                  cubit.completeOnboarding();
-                                }
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    currentPage == _slides.length - 1
-                                        ? 'Get Started'
-                                        : 'Next',
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                          color: AppColors.onPrimaryContainer,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.onPrimaryContainer.withOpacity(0.1),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_forward_rounded,
-                                      color: AppColors.onPrimaryContainer,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          // iOS indicator spacer
-                          const SizedBox(height: AppDimensions.sm),
-                          Container(
-                            width: 120,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: AppColors.surfaceContainerHighest,
-                              borderRadius: BorderRadius.circular(2.5),
-                            ),
-                          ),
-                        ],
-                      ),
+                    OnboardingIndicator(
+                      totalSteps: _slides.length,
+                      currentStep: currentPage,
+                      isLastStep: currentPage == _slides.length - 1,
+                      onNext: () {
+                        if (currentPage < _slides.length - 1) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeInOut,
+                          );
+                        } else {
+                          cubit.completeOnboarding();
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -237,87 +146,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class OnboardingSlideData {
-  final String title;
-  final String description;
-  final String imageUrl;
-
-  const OnboardingSlideData({
-    required this.title,
-    required this.description,
-    required this.imageUrl,
-  });
-}
-
-class OnboardingSlideWidget extends StatelessWidget {
-  final OnboardingSlideData data;
-
-  const OnboardingSlideWidget({super.key, required this.data});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.lg),
-      child: Column(
-        children: [
-          // Illustration Area with Glassmorphism shadow
-          Expanded(
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: 280,
-                    height: 280,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.4),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  Image.network(
-                    data.imageUrl,
-                    width: 260,
-                    height: 260,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.restaurant,
-                      size: 120,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Title & Description
-          Column(
-            children: [
-              Text(
-                data.title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: AppColors.onSurface,
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-              const SizedBox(height: AppDimensions.md),
-              Text(
-                data.description,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.onSurfaceVariant,
-                    ),
-              ),
-            ],
-          ),
-          const SizedBox(height: AppDimensions.lg),
-        ],
       ),
     );
   }

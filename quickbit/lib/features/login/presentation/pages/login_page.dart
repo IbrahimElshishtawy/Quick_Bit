@@ -8,8 +8,9 @@ import 'package:quickbit/features/shared_auth/bloc/auth_bloc.dart';
 import 'package:quickbit/features/shared_auth/bloc/auth_event.dart';
 import 'package:quickbit/features/shared_auth/bloc/auth_state.dart';
 import 'package:quickbit/features/register/presentation/pages/register_page.dart';
-import 'package:quickbit/features/forgot_password/presentation/pages/forgot_password_page.dart';
 import 'package:quickbit/features/home/presentation/pages/home_page.dart';
+import 'package:quickbit/features/login/presentation/widgets/login_form.dart';
+import 'package:quickbit/features/login/presentation/widgets/social_login_buttons.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _obscurePassword = true;
 
   @override
   void dispose() {
@@ -32,14 +32,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submitLogin(BuildContext context) {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState?.validate() ?? false) {
       context.read<AuthBloc>().add(
-            AuthLoginEvent(
+            AuthLoginSubmittedEvent(
               email: _emailController.text.trim(),
-              password: _passwordController.text,
+              password: _passwordController.text.trim(),
             ),
           );
     }
+  }
+
+  void _navigateToHome(BuildContext context) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
   }
 
   @override
@@ -50,11 +56,9 @@ class _LoginPageState extends State<LoginPage> {
       create: (_) => sl<AuthBloc>(),
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthAuthenticated) {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          } else if (state is AuthError) {
+          if (state is AuthSuccess) {
+            _navigateToHome(context);
+          } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),
@@ -65,39 +69,34 @@ class _LoginPageState extends State<LoginPage> {
         },
         builder: (context, state) {
           return Scaffold(
+            backgroundColor: AppColors.background,
             body: SafeArea(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.lg,
-                  vertical: AppDimensions.xl,
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Header Section
-                      Column(
+                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.lg),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(height: AppDimensions.xxl),
+
+                    // Logo & App Name
+                    Center(
+                      child: Column(
                         children: [
                           Container(
-                            width: 96,
-                            height: 96,
+                            width: 80,
+                            height: 80,
                             decoration: BoxDecoration(
-                              color: AppColors.surfaceContainerLow,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Color(0x0A000000),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 4),
-                                )
-                              ],
+                              color: AppColors.primaryContainer.withValues(alpha: 0.1),
+                              shape: BoxShape.circle,
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.network(
-                                AppAssets.logo,
-                                fit: BoxFit.contain,
+                            child: Image.network(
+                              AppAssets.logo,
+                              width: 50,
+                              height: 50,
+                              errorBuilder: (context, error, stackTrace) => const Icon(
+                                Icons.fastfood,
+                                size: 40,
+                                color: AppColors.primary,
                               ),
                             ),
                           ),
@@ -105,282 +104,73 @@ class _LoginPageState extends State<LoginPage> {
                           Text(
                             'Welcome Back!',
                             style: theme.textTheme.headlineMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.onSurface,
                             ),
                           ),
                           const SizedBox(height: AppDimensions.xs),
                           Text(
-                            'Log in to your campus dining account',
-                            style: theme.textTheme.bodyMedium,
+                            'Login to order your favorite campus meals',
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: AppDimensions.xl),
+                    ),
+                    const SizedBox(height: AppDimensions.xxl),
 
-                      // Email Field
-                      Text(
-                        'Email',
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: AppColors.onSurfaceVariant,
-                        ),
-                      ),
-                      const SizedBox(height: AppDimensions.xs),
-                      TextFormField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          hintText: 'alex.rivera@campus.edu',
-                          filled: true,
-                          fillColor: AppColors.surfaceContainerLow,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            borderSide: const BorderSide(color: AppColors.primary, width: 2),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            borderSide: const BorderSide(color: AppColors.error, width: 1.5),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: AppDimensions.md,
-                            vertical: AppDimensions.md,
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email is required';
-                          }
-                          if (!value.contains('@')) {
-                            return 'Invalid email format';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: AppDimensions.md),
+                    // Login Form widget
+                    LoginForm(
+                      formKey: _formKey,
+                      emailController: _emailController,
+                      passwordController: _passwordController,
+                      isLoading: state is AuthLoading,
+                      onSubmit: () => _submitLogin(context),
+                    ),
+                    const SizedBox(height: AppDimensions.xl),
 
-                      // Password Field
-                      Text(
-                        'Password',
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: AppColors.onSurfaceVariant,
-                        ),
-                      ),
-                      const SizedBox(height: AppDimensions.xs),
-                      TextFormField(
-                        controller: _passwordController,
-                        obscureText: _obscurePassword,
-                        decoration: InputDecoration(
-                          hintText: '••••••••',
-                          filled: true,
-                          fillColor: AppColors.surfaceContainerLow,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            borderSide: const BorderSide(color: AppColors.primary, width: 2),
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscurePassword ? Icons.visibility : Icons.visibility_off,
-                              color: AppColors.onSurfaceVariant,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _obscurePassword = !_obscurePassword;
-                              });
-                            },
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: AppDimensions.md,
-                            vertical: AppDimensions.md,
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Password is required';
-                          }
-                          if (value.length < 6) {
-                            return 'Password must be at least 6 characters';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: AppDimensions.sm),
+                    // Social login buttons
+                    SocialLoginButtons(
+                      onGooglePressed: () {},
+                      onApplePressed: () {},
+                    ),
+                    const SizedBox(height: AppDimensions.xl),
 
-                      // Forgot Password Link
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
+                    // Sign Up Link
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Don't have an account? ",
+                          style: TextStyle(color: AppColors.onSurfaceVariant),
+                        ),
+                        GestureDetector(
+                          onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const ForgotPasswordPage(),
+                                builder: (context) => const RegisterPage(),
                               ),
                             );
                           },
-                          child: Text(
-                            'Forgot Password?',
-                            style: theme.textTheme.labelLarge?.copyWith(
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(
                               color: AppColors.primary,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: AppDimensions.md),
-
-                      // Login Button
-                      SizedBox(
-                        height: AppDimensions.buttonHeight,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            foregroundColor: AppColors.onPrimary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                            ),
-                            elevation: 4,
-                            shadowColor: AppColors.primary.withOpacity(0.4),
-                          ),
-                          onPressed: state is AuthLoading ? null : () => _submitLogin(context),
-                          child: state is AuthLoading
-                              ? const CircularProgressIndicator(color: Colors.white)
-                              : const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Login',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(width: AppDimensions.sm),
-                                    Icon(Icons.login, size: 20),
-                                  ],
-                                ),
-                        ),
-                      ),
-                      const SizedBox(height: AppDimensions.xl),
-
-                      // Divider
-                      const Row(
-                        children: [
-                          Expanded(child: Divider(color: AppColors.outlineVariant)),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: AppDimensions.md),
-                            child: Text(
-                              'or continue with',
-                              style: TextStyle(color: AppColors.onSurfaceVariant, fontSize: 14),
-                            ),
-                          ),
-                          Expanded(child: Divider(color: AppColors.outlineVariant)),
-                        ],
-                      ),
-                      const SizedBox(height: AppDimensions.xl),
-
-                      // Social Logins
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _SocialButton(
-                              icon: Icons.g_mobiledata,
-                              label: 'Google',
-                              onPressed: () {},
-                            ),
-                          ),
-                          const SizedBox(width: AppDimensions.md),
-                          Expanded(
-                            child: _SocialButton(
-                              icon: Icons.apple,
-                              label: 'Apple',
-                              onPressed: () {},
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: AppDimensions.xl),
-
-                      // Sign Up Link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Don't have an account? ",
-                            style: TextStyle(color: AppColors.onSurfaceVariant),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const RegisterPage(),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    const SizedBox(height: AppDimensions.xl),
+                  ],
                 ),
               ),
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class _SocialButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onPressed;
-
-  const _SocialButton({
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: AppDimensions.buttonHeight,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: AppColors.outlineVariant),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-          ),
-          backgroundColor: Colors.white,
-        ),
-        onPressed: onPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 24, color: AppColors.onBackground),
-            const SizedBox(width: AppDimensions.sm),
-            Text(
-              label,
-              style: const TextStyle(
-                color: AppColors.onBackground,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
