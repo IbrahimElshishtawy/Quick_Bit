@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/usecases/login_usecase.dart';
-import '../../domain/usecases/register_usecase.dart';
-import '../../domain/usecases/forgot_password_usecase.dart';
-import '../../data/datasources/auth_local_datasource.dart';
+import 'package:quickbit/features/shared_auth/domain/usecases/login_usecase.dart';
+import 'package:quickbit/features/shared_auth/domain/usecases/register_usecase.dart';
+import 'package:quickbit/features/shared_auth/domain/usecases/forgot_password_usecase.dart';
+import 'package:quickbit/features/shared_auth/data/datasources/auth_local_datasource.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../injection_container.dart';
-import '../cubit/home_cubit.dart';
-import '../cubit/home_state.dart';
-import '../entities/cafe_entity.dart';
-import '../entities/food_item_entity.dart';
-import 'food_details_page.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/home/presentation/cubit/home_cubit.dart';
+import 'package:quickbit/features/home/presentation/cubit/home_state.dart';
+import 'package:quickbit/features/home/domain/entities/cafe_entity.dart';
+import 'package:quickbit/features/home/domain/entities/food_item_entity.dart';
+import 'package:quickbit/features/food_details/presentation/pages/food_details_page.dart';
 
 class CafeDetailsPage extends StatefulWidget {
   final CafeEntity cafe;

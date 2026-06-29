@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/assets.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../injection_container.dart';
-import '../bloc/auth_bloc.dart';
-import '../bloc/auth_event.dart';
-import '../bloc/auth_state.dart';
+import 'package:quickbit/core/constants/assets.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_bloc.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_event.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_state.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});

@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../domain/entities/order_entity.dart';
-import '../bloc/cart_bloc.dart';
-import '../bloc/cart_event.dart';
-import '../bloc/cart_state.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/features/cart/domain/entities/order_entity.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_event.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_state.dart';
 
 class OrderTrackingPage extends StatefulWidget {
   final OrderEntity order;

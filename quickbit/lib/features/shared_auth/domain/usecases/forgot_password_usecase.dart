@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../core/errors/failures.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../repositories/auth_repository.dart';
+import 'package:quickbit/core/errors/failures.dart';
+import 'package:quickbit/core/usecases/usecase.dart';
+import 'package:quickbit/features/shared_auth/domain/repositories/auth_repository.dart';
 
 class ForgotPasswordUseCase implements UseCase<Unit, ForgotPasswordParams> {
   final AuthRepository repository;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/theme/app_theme.dart';
-import 'features/onboarding/presentation/pages/splash_page.dart';
+import 'features/splash/presentation/pages/splash_page.dart';
 import 'features/cart/presentation/bloc/cart_bloc.dart';
 import 'injection_container.dart' as di;
 

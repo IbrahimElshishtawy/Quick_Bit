@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../datasources/auth_local_datasource.dart';
-import '../datasources/auth_remote_datasource.dart';
+import 'package:quickbit/core/errors/exceptions.dart';
+import 'package:quickbit/core/errors/failures.dart';
+import 'package:quickbit/features/shared_auth/domain/entities/user_entity.dart';
+import 'package:quickbit/features/shared_auth/domain/repositories/auth_repository.dart';
+import 'package:quickbit/features/shared_auth/data/datasources/auth_local_datasource.dart';
+import 'package:quickbit/features/shared_auth/data/datasources/auth_remote_datasource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;

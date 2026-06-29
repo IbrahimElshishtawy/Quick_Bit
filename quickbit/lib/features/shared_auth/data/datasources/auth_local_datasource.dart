@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../core/errors/exceptions.dart';
-import '../models/user_model.dart';
+import 'package:quickbit/core/errors/exceptions.dart';
+import 'package:quickbit/features/shared_auth/data/models/user_model.dart';
 
 abstract class AuthLocalDataSource {
   Future<UserModel?> getCachedUser();

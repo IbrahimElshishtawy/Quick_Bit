@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../injection_container.dart';
-import '../../../auth/presentation/bloc/auth_bloc.dart';
-import '../../../auth/presentation/bloc/auth_event.dart';
-import '../../../auth/presentation/bloc/auth_state.dart';
-import '../../../auth/presentation/pages/login_page.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_bloc.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_event.dart';
+import 'package:quickbit/features/shared_auth/bloc/auth_state.dart';
+import 'package:quickbit/features/login/presentation/pages/login_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

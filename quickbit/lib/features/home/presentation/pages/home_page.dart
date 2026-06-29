@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../injection_container.dart';
-import '../cubit/home_cubit.dart';
-import '../cubit/home_state.dart';
-import '../entities/cafe_entity.dart';
-import 'cafe_details_page.dart';
-import 'favorites_page.dart';
-import '../../../cart/presentation/pages/cart_page.dart';
-import '../../../profile/presentation/pages/profile_page.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/home/presentation/cubit/home_cubit.dart';
+import 'package:quickbit/features/home/presentation/cubit/home_state.dart';
+import 'package:quickbit/features/home/domain/entities/cafe_entity.dart';
+import 'package:quickbit/features/cafe_details/presentation/pages/cafe_details_page.dart';
+import 'package:quickbit/features/favorites/presentation/pages/favorites_page.dart';
+import 'package:quickbit/features/cart/presentation/pages/cart_page.dart';
+import 'package:quickbit/features/profile/presentation/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
