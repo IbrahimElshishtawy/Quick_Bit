@@ -98,7 +98,7 @@ class AppTheme {
           color: AppColors.onSurfaceVariant,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surfaceContainerLowest,
         elevation: 0,
         shape: RoundedRectangleBorder(

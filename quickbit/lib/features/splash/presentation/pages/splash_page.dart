@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:quickbit/core/constants/assets.dart';
 import 'package:quickbit/core/constants/colors.dart';
-import 'package:quickbit/core/constants/dimensions.dart';
 import 'package:quickbit/core/usecases/usecase.dart';
 import 'package:quickbit/injection_container.dart';
 import 'package:quickbit/features/onboarding/domain/usecases/is_onboarding_completed.dart';
 import 'package:quickbit/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:quickbit/features/login/presentation/pages/login_page.dart';
+import 'package:quickbit/features/splash/presentation/widgets/splash_logo.dart';
+import 'package:quickbit/features/splash/presentation/widgets/splash_illustration.dart';
+import 'package:quickbit/features/splash/presentation/widgets/splash_footer.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -83,8 +84,6 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -104,187 +103,22 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Header / Logo Area
-              Padding(
-                padding: const EdgeInsets.only(top: AppDimensions.xxl),
-                child: FadeTransition(
-                  opacity: _fadeInAnimation,
-                  child: Column(
-                    children: [
-                      ScaleTransition(
-                        scale: _pulseAnimation,
-                        child: Image.network(
-                          AppAssets.logo,
-                          width: 120,
-                          height: 120,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(Icons.fastfood, size: 80, color: AppColors.primary),
-                        ),
-                      ),
-                      const SizedBox(height: AppDimensions.md),
-                      Text(
-                        'QuickBite',
-                        style: theme.textTheme.headlineLarge?.copyWith(
-                          color: AppColors.onSurface,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: AppDimensions.xs),
-                      Text(
-                        'Swift Campus Dining',
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: AppColors.onSurfaceVariant.withOpacity(0.7),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              SplashLogo(
+                fadeInAnimation: _fadeInAnimation,
+                pulseAnimation: _pulseAnimation,
               ),
 
               // Central Illustration
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(0, _floatAnimation.value),
-                    child: child,
-                  );
-                },
-                child: Container(
-                  width: 280,
-                  height: 280,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x0FFF6B35),
-                        blurRadius: 40,
-                        spreadRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Image.network(
-                    AppAssets.splashIllustration,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.delivery_dining,
-                      size: 150,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
+              SplashIllustration(
+                floatAnimation: _floatAnimation,
               ),
 
               // Footer / Loading Status
-              Padding(
-                padding: const EdgeInsets.only(bottom: AppDimensions.xl),
-                child: Column(
-                  children: [
-                    // Custom Loading dots
-                    const _LoadingDots(),
-                    const SizedBox(height: AppDimensions.sm),
-                    Text(
-                      'LOADING DELICIOUSNESS',
-                      style: theme.textTheme.labelLarge?.copyWith(
-                        letterSpacing: 2,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.onSurfaceVariant.withOpacity(0.6),
-                      ),
-                    ),
-                    const SizedBox(height: AppDimensions.xxl),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.verified,
-                          size: 16,
-                          color: Colors.green,
-                        ),
-                        const SizedBox(width: AppDimensions.xs),
-                        Text(
-                          'Safe & Secure Campus Delivery',
-                          style: theme.textTheme.labelSmall?.copyWith(
-                            color: AppColors.onSurfaceVariant.withOpacity(0.5),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              const SplashFooter(),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class _LoadingDots extends StatefulWidget {
-  const _LoadingDots();
-
-  @override
-  State<_LoadingDots> createState() => _LoadingDotsState();
-}
-
-class _LoadingDotsState extends State<_LoadingDots> with SingleTickerProviderStateMixin {
-  late AnimationController _dotsController;
-
-  @override
-  void initState() {
-    super.initState();
-    _dotsController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1400),
-    )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _dotsController.dispose();
-    super.dispose();
-  }
-
-  Widget _buildDot(int delayIndex) {
-    final double begin = 0.3;
-    final double end = 1.0;
-
-    return AnimatedBuilder(
-      animation: _dotsController,
-      builder: (context, child) {
-        final double t = (_dotsController.value - (delayIndex * 0.16)).clamp(0.0, 1.0);
-        final double scale = begin + (end - begin) * (1.0 - (t - 0.5).abs() * 2);
-        final double opacity = begin + (end - begin) * (1.0 - (t - 0.5).abs() * 2);
-
-        return Opacity(
-          opacity: opacity.clamp(0.3, 1.0),
-          child: Transform.scale(
-            scale: scale.clamp(0.5, 1.2),
-            child: Container(
-              width: 8,
-              height: 8,
-              decoration: const BoxDecoration(
-                color: AppColors.primary,
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildDot(0),
-        const SizedBox(width: 6),
-        _buildDot(1),
-        const SizedBox(width: 6),
-        _buildDot(2),
-      ],
     );
   }
 }
