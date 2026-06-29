@@ -1,0 +1,19 @@
+class AppAssets {
+  AppAssets._();
+
+  // Network Images
+  static const String logo =
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBKpZhIKQtJDv_Y3y4DbHd2Pwx7HoIAEcj7WxhCTzenfhXyqRnw6iUr0wORG9mrIbqDzakqCGkDBcBZ5mrN3N6nci1GP8SGTTG-aZZN0z99zDMFsdandGkASS-mrFGWyn6ixHXdICpBe-2VAt09t-MtVS6dMHQegyxZG6S6nVVF5msmGlWBmXsyQ1U21CJ3cabeUnn4RJFQUjy9pnrMvMXrrqdl7YIDVouWiuMByVjVT4ubv96RTd3tkPyP5l_QjuleIL75_PAwCI4';
+
+  static const String splashIllustration =
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAqiWQhQz_ApdvTc1s3Shi9269xjqifzQ24sqm9oA1MYfselC3EwsACxgk3cxLvJ3O-I1IY9sbUR8InsHB6ntGuJhB4K9Dl6nJRUSTKC6V0X_FnilYLW-dCRqGwUeEhuDx0dUjVENqjxUxwWQQqaMPixbGklY7TmK9hksh3XjWEShR-PP08YY4QxcIniaYcooljHuIyE-g5FmWEg6d4dS7mfEXqX3TyUM9yeGpEzftepTglqQq7qesCrhRk-9RcvzsE-oSfClHxHwI';
+
+  static const String onboardingDiscover =
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCCapxMjTjhOlSaaCQzbHt8ZsTqYT2vQmwuTUanLjsiaUybyhtvezUFX9O3eN_ZoP4xFOyPf4V5ziNJmj-EZ-Pz_9m6u1aDq0xiteYysbZZKl5Ar_GjNU_tCWYvRIq6pNq3kPABOhXvtJ0fpHGsyD7aeLGlTpDxafjfcxVH0jqOVo0_BHB-KZnM9PlzAWKTKG0DC_RGxXqLwhrGR8E9ETs-n-sIdkZbN8Q7-DI2vtAJrvQ5YhrHi8_fgTr-Il90D2KovG_irPBlNUw';
+
+  static const String onboardingOrder =
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCCapxMjTjhOlSaaCQzbHt8ZsTqYT2vQmwuTUanLjsiaUybyhtvezUFX9O3eN_ZoP4xFOyPf4V5ziNJmj-EZ-Pz_9m6u1aDq0xiteYysbZZKl5Ar_GjNU_tCWYvRIq6pNq3kPABOhXvtJ0fpHGsyD7aeLGlTpDxafjfcxVH0jqOVo0_BHB-KZnM9PlzAWKTKG0DC_RGxXqLwhrGR8E9ETs-n-sIdkZbN8Q7-DI2vtAJrvQ5YhrHi8_fgTr-Il90D2KovG_irPBlNUw';
+
+  static const String onboardingPickup =
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDpla3luMigxPzC8P99rFvDvANDszNpwIt-8GyZkmi2y5oudoW-hMf5LhOLbAMWxo_0i4To63xTR3LM1i5WVJt9wYQ1tN0royh0zs8lJ8phRNWkFDEfB81uoAEv6mtbwfWJn_eikh1ImVBPBE9FwRrZau1wHrD9xii8tnc-J4hh1aLFTyEQEj7x8wtDweoL2H9ZsiOVmzmEoVPfZX9fn6guSAGqZQFqRhnF-jYeBP3JSMAhjnBbhNqxAC-YXF1Q4eag6gW3ClurmBY';
+}
