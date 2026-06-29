@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5f1900",
+                    "surface-container-high": "#e8e8ea",
+                    "primary-fixed-dim": "#ffb59d",
+                    "secondary-fixed": "#ffddb6",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#00677e",
+                    "secondary": "#845400",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-container": "#feb246",
+                    "primary-container": "#ff6b35",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "surface": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "surface-container": "#eeeef0",
+                    "background": "#f9f9fc",
+                    "surface-container-low": "#f3f3f6",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary": "#ab3500",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#594139",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-tertiary-container": "#003744",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-container": "#6f4600",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3133",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "outline-variant": "#e1bfb5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00a7cb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .unread-indicator {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            width: 8px;
+            height: 8px;
+            background-color: #ab3500;
+            border-radius: 50%;
+        }
+        .custom-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="sticky top-0 w-full z-50 bg-surface/70 dark:bg-surface-dim/70 custom-blur shadow-sm h-16 flex justify-between items-center px-md">
+<div class="flex items-center gap-md">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary text-[24px]">menu</span>
+</button>
+<h1 class="font-display-lg text-title-lg font-bold text-primary">QuickBite</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="active:scale-95 transition-transform hover:opacity-80 p-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a young adult student with a friendly expression. The lighting is soft and natural, suggesting a campus environment. The overall aesthetic is clean and modern, matching a premium lifestyle brand with high-end photography standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOytQD2GjCs37b3eT9Yh4alPvZnTub3sJDXMRt0as6WBfIlKyNtREYG6BXRNN0un0P_roJcJTXXNfpfJJG5o3j6tdZvI6t6P8PMtRYbJ6uxscYbJch0_SPQn9-gS4yi9HrTgiip5AAmSocqQALhk0kS2bViuOUraQXcTRqaOpmBYM_YvsJmWW2KKCV9wYN05qDHOP80Oapo3NCRrOKr6skDTqTbGgA3eCMJdK9NjxCJZK909VqJw7U_NqQrxbxoxO2WJ5Q0xKbJqE"/>
+</div>
+</div>
+</header>
+<main class="px-md mt-lg max-w-md mx-auto">
+<div class="flex items-center justify-between mb-xl">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Notifications</h2>
+<button class="font-label-lg text-label-lg text-primary font-semibold hover:opacity-80 transition-opacity">
+                Mark all as read
+            </button>
+</div>
+<!-- Section: Today -->
+<div class="space-y-md mb-xl">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wider mb-sm">Today</h3>
+<!-- Notification Item: Order Status -->
+<div class="relative bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex gap-md active:scale-[0.98] transition-transform cursor-pointer">
+<div class="unread-indicator"></div>
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-title-md text-title-md text-on-surface">Your order is ready!</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Pick up your Sunset Latte at Main Hall Café. Your order #2841 is waiting.</p>
+<span class="font-label-sm text-label-sm text-outline mt-xs">2 mins ago</span>
+</div>
+</div>
+<!-- Notification Item: Promotion -->
+<div class="relative bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex gap-md active:scale-[0.98] transition-transform cursor-pointer">
+<div class="unread-indicator"></div>
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">coffee</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-title-md text-title-md text-on-surface">2-for-1 Coffee today</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Flash deal! Buy any coffee and get one free before 2 PM today at all campus locations.</p>
+<span class="font-label-sm text-label-sm text-outline mt-xs">1 hour ago</span>
+</div>
+</div>
+</div>
+<!-- Section: Yesterday -->
+<div class="space-y-md">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wider mb-sm">Yesterday</h3>
+<!-- Notification Item: Gift/Promo -->
+<div class="bg-surface-container-low/50 p-md rounded-xl flex gap-md opacity-80 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container">redeem</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-title-md text-title-md text-on-surface">Reward Unlocked</p>
+<p class="font-body-md text-body-md text-on-surface-variant">You've earned a 'Premium Member' badge! Enjoy 5% off on your next 10 orders.</p>
+<span class="font-label-sm text-label-sm text-outline mt-xs">Yesterday, 4:30 PM</span>
+</div>
+</div>
+<!-- Notification Item: System Alert -->
+<div class="bg-surface-container-low/50 p-md rounded-xl flex gap-md opacity-80 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-title-md text-title-md text-on-surface">Scheduled Maintenance</p>
+<p class="font-body-md text-body-md text-on-surface-variant">QuickBite services will be offline for 15 minutes tonight at midnight for a system upgrade.</p>
+<span class="font-label-sm text-label-sm text-outline mt-xs">Yesterday, 9:15 AM</span>
+</div>
+</div>
+<!-- Notification Item: Order Success -->
+<div class="bg-surface-container-low/50 p-md rounded-xl flex gap-md opacity-80 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-title-md text-title-md text-on-surface">Order #2839 Complete</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Thanks for dining with us! How was your meal from The Burger Hub?</p>
+<span class="font-label-sm text-label-sm text-outline mt-xs">Yesterday, 1:20 PM</span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Bento-style Promo Card -->
+<div class="mt-2xl mb-md p-lg rounded-[24px] bg-primary relative overflow-hidden shadow-lg group active:scale-95 transition-all">
+
+<div class="relative z-10 flex flex-col gap-sm">
+<span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-widest self-start">New Benefit</span>
+<h4 class="font-display-lg text-headline-lg-mobile text-white">Join the Prime Club</h4>
+<p class="text-white/80 font-body-md max-w-[70%]">Get unlimited free delivery on campus and exclusive seasonal menu items.</p>
+<button class="mt-md bg-white text-primary px-lg py-sm rounded-xl font-title-md self-start hover:bg-opacity-90 transition-colors">Learn More</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-20">
+<span class="material-symbols-outlined text-[120px] text-white">loyalty</span>
+</div>
+</div>
+</main>
+<!-- Bottom NavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/70 dark:bg-surface-dim/70 custom-blur shadow-lg flex justify-around items-center h-20 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<!-- Active Tab: Notifications (semantic fallback from Profile/Activity context) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interaction for clicking notification items
+        document.querySelectorAll('.cursor-pointer').forEach(item => {
+            item.addEventListener('click', function() {
+                const indicator = this.querySelector('.unread-indicator');
+                if (indicator) {
+                    indicator.classList.add('opacity-0');
+                    setTimeout(() => indicator.remove(), 300);
+                }
+            });
+        });
+    </script>
+</body></html>

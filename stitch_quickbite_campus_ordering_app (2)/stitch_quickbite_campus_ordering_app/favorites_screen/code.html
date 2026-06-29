@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickBite - Favorites</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5f1900",
+                    "surface-container-high": "#e8e8ea",
+                    "primary-fixed-dim": "#ffb59d",
+                    "secondary-fixed": "#ffddb6",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#00677e",
+                    "secondary": "#845400",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-container": "#feb246",
+                    "primary-container": "#ff6b35",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "surface": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "surface-container": "#eeeef0",
+                    "background": "#f9f9fc",
+                    "surface-container-low": "#f3f3f6",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary": "#ab3500",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#594139",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-tertiary-container": "#003744",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-container": "#6f4600",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3133",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "outline-variant": "#e1bfb5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00a7cb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "20px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tab-active { position: relative; color: var(--tw-primary); }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background-color: #ab3500;
+            border-radius: 99px;
+        }
+
+        .card-shadow {
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="sticky top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-md h-16">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="menu">menu</button>
+</div>
+<h1 class="font-display-lg text-title-lg font-bold text-primary">QuickBite</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high active:scale-95 transition-transform">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a smiling young adult with warm skin tones, set against a blurred modern architectural background. The lighting is soft and natural, emphasizing a friendly and approachable campus persona. The overall aesthetic is clean, high-resolution, and perfectly suited for a premium lifestyle application profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbSl0XFBXDgmPNqeYqPewxnIz8vUMwInT-n851R32WUbyYwQm57H1c_JWg34v-DnAJFtfMto4u6hd3rZFVYYI5DQy9kB_iqJDAFaPdcUPEYHJMYFqPJDIAIbtWQaiIIZFgBOjZRG5MF0EddKYtrKa65yEYE6vtJ-OH9oH661OVKTqhEOoutxAS50N-P4ZQ_5obB7s5MIjj9-i0b8pddVnomfksr37OFXl5ZcddrVqrzD3KUZnE23bnsaJhIN1QViQN2n0dmID4Hw"/>
+</div>
+</header>
+<main class="px-md mt-lg">
+<!-- Headline -->
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your Favorites</h2>
+<p class="text-on-surface-variant font-body-md mt-xs">Quick access to the things you love.</p>
+</div>
+<!-- Custom Tabs Navigation -->
+<div class="flex gap-lg border-b border-surface-container-high mb-lg overflow-x-auto hide-scrollbar">
+<button class="tab-active font-title-md text-title-md pb-sm transition-all text-primary" id="tab-cafes" onclick="switchTab('cafes')">Cafés</button>
+<button class="font-title-md text-title-md pb-sm transition-all text-on-surface-variant" id="tab-meals" onclick="switchTab('meals')">Meals</button>
+</div>
+<!-- Tab Content: Cafes -->
+<div class="space-y-md" id="content-cafes">
+<!-- Cafe Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-shadow group transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full">
+<img alt="Modern Cafe" class="w-full h-full object-cover" data-alt="An interior shot of a sophisticated modern cafe with minimalist furniture, light wood textures, and large windows inviting soft natural sunlight. The atmosphere is quiet and premium, with a clean architectural design. Soft shadows and a warm color palette of creams and light browns create a serene environment for students." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmwdNsKcNv3fU_gPbqjP5QBhIrOFL9CVNfh9wk-csHLnkiylbn7m0Kxtckr4E3OlH4NmbkhxRsEUrj7KUIwksLz7837NB6ePqJsRxzFQyvmPBMgMafXAKuuqcVQMEGH5WRT3KVIr1VRkG_p6WGK0qCyLnIyxHyJUPKPl6ZkZFgUtU6BhyxXHNkKzPVmFhvtseWNdwS_9-wmbj0StaGi4zivPiymuU45R7B1nTmDuldR7xUSwvObl8uxBgmZC2-k_WvfkqjkBl3dRk"/>
+<button class="absolute top-3 right-3 bg-surface/90 backdrop-blur-md p-2 rounded-full text-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">The Brew Lab</h3>
+<div class="flex items-center gap-xs text-on-surface-variant text-label-sm mt-xs">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>4.8 (120+)</span>
+<span>•</span>
+<span>10-15 min</span>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-label-lg hover:opacity-90 active:scale-95 transition-all">
+                            Order Again
+                        </button>
+</div>
+</div>
+</div>
+<!-- Cafe Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-shadow group transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full">
+<img alt="Campus Bistro" class="w-full h-full object-cover" data-alt="A cozy, high-end campus bistro featuring industrial-chic decor with exposed bricks and dark metal accents. The lighting is moody and warm, highlighting artisan coffee equipment on a marble counter. The image captures a quiet moment of focus and premium quality in a busy academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD447_O7yLJSRxhmkg9eGGF8qwek_Su55lIJvSX8KgrhRmhZ526fPIdFtne-JwBBlXoQfSSIf1uL9J6bKXDs49mqdS7oWRthUl3nVbdDtMMBPGvwf3nJwRoVYWelSLYSulafBLO4BIZjcvF7wAywTAI8I3x2MkCDc3cIEdWO6fNe_RKKGD3WDka-yHZ9GgI3LodTZI9rkTSnKDLYdj6zx64d0BGSW_SVnB8_Pu4-D36qwLSDi-SV-rpvQ8xnk-ovPrbEfAANijPN-w"/>
+<button class="absolute top-3 right-3 bg-surface/90 backdrop-blur-md p-2 rounded-full text-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Central Green Bistro</h3>
+<div class="flex items-center gap-xs text-on-surface-variant text-label-sm mt-xs">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>4.6 (85)</span>
+<span>•</span>
+<span>5-10 min</span>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-label-lg hover:opacity-90 active:scale-95 transition-all">
+                            Order Again
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab Content: Meals (Hidden by default) -->
+<div class="hidden space-y-md" id="content-meals">
+<!-- Meal Card 1 -->
+<div class="flex bg-surface-container-lowest rounded-2xl overflow-hidden card-shadow p-sm gap-md items-center">
+<img alt="Healthy Bowl" class="w-24 h-24 rounded-xl object-cover shrink-0" data-alt="A gourmet salad bowl with vibrant fresh vegetables, quinoa, and grilled protein, presented in a minimalist ceramic dish. The lighting is bright and crisp, highlighting the textures and colors of the food. The style is modern and clean, focusing on health and premium quality in every ingredient." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEexF-3KfFmYj2b6vrmg2Olp819L55IK1K9pwlYM17hvSh4oCNIfiLeUOcUyYI-7ngHWwWTfwNCPPSF4eylKP6LLh8lc0hVu5bd5NJFqZsW07zcdyiSGQW5TmSAHj2QFIrk4EDPMaNumEQmBZvHhszAxIdvVe-U5b1YZDMeixcB5OFXfO5ZD7_X34bGMEye6uYHjY4zrfmJsQW9nRgNlUKJnNUhhQ8Ll95SW2nKVL0Fc7NetHopeW84-m6uJFrdZismiGVJLIyCJg"/>
+<div class="flex-1 pr-sm">
+<div class="flex justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Harvest Bowl</h3>
+<span class="text-primary font-bold">$12.50</span>
+</div>
+<p class="text-on-surface-variant text-label-sm line-clamp-1 mt-xs">Quinoa, kale, roasted sweet potato, avocado.</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-1 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>Popular</span>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded-full shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Meal Card 2 -->
+<div class="flex bg-surface-container-lowest rounded-2xl overflow-hidden card-shadow p-sm gap-md items-center">
+<img alt="Artisan Pizza" class="w-24 h-24 rounded-xl object-cover shrink-0" data-alt="A close-up shot of a single serving artisan thin-crust pizza with fresh basil leaves and melted buffalo mozzarella. The image emphasizes the crispy texture of the crust and the vibrant red of the tomato sauce. Set on a rustic yet clean background with high-contrast, premium lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVAxmJMMirFIM2D-RaMUz6UBlwQrOCBPN4HxKKSkvqjue8_mIslHZLN49394p9_-GRLL41q1n-rbCMrmADEFMMKX4sUV2KcbuKsWc1sJ3A0TuSpSrU_w3TScNjv7E2NkhLa6P5h_FG241BzBoJpKZyzZoEm0A383DL2R0dW5rFKmBphu2Trs8_z42M5lmO-8zzDYadklGEVoVYPROnhYpXpAl-jH3tBYrRYSnGC5ApMPMLs7esuoZLgaBg0ymBCZlEiQfT3p6BD6M"/>
+<div class="flex-1 pr-sm">
+<div class="flex justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Margherita Flatbread</h3>
+<span class="text-primary font-bold">$10.00</span>
+</div>
+<p class="text-on-surface-variant text-label-sm line-clamp-1 mt-xs">Fresh basil, buffalo mozzarella, San Marzano tomato.</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-1 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span>8 min</span>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded-full shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recently Ordered Section -->
+<section class="mt-xl mb-md">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-lg text-title-lg text-on-surface">Recently Ordered</h3>
+<button class="text-primary font-label-lg">View All</button>
+</div>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-xs">
+<!-- Recent Item 1 -->
+<div class="shrink-0 w-32 bg-surface-container-low rounded-2xl p-sm text-center card-shadow active:scale-95 transition-transform">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-sm">
+<img alt="Latte" class="w-full h-full object-cover" data-alt="A perfectly poured oat milk latte with elegant latte art in a minimalist ceramic cup. The drink is placed on a clean white surface with soft morning light creating gentle shadows. The mood is sophisticated and energetic, evoking a premium morning routine on campus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoVNblEP1T9C6EEqCLUkp1iIw78xigXzHuBU_Z5a_SmsRcIB7etlJNk1SFCr8bKGkZUoRftYHtaCKvs8NX75UbYp6l2E-TUJJL6dg4OznTBaVApsAM0oDReHNFadHipokNtk1jsA8tFa7tQ1336SahyzR1y5evnKZZxeXvvNbI9fD53b9RuxY0_EfAgofbZzVPTXhDh2nDlK1xbyq_Mo_7Ym2g037OS5AUF0j7C0Mo3v46WgDg2vncsYBPKfSdnoQR2mfR29qtXJY"/>
+</div>
+<span class="font-label-lg text-on-surface block truncate">Oat Latte</span>
+<span class="text-label-sm text-on-surface-variant">$4.50</span>
+</div>
+<!-- Recent Item 2 -->
+<div class="shrink-0 w-32 bg-surface-container-low rounded-2xl p-sm text-center card-shadow active:scale-95 transition-transform">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-sm">
+<img alt="Bagel" class="w-full h-full object-cover" data-alt="A fresh toasted everything bagel with thick cream cheese and smoked salmon slices, presented on a light gray plate. High-contrast lighting highlights the textures of the seeds and the freshness of the salmon. The aesthetic is clean, modern, and appetizing for a high-end breakfast option." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP_RYcoturdNFNBpqzbEqEOUdZV0DjbA87htq8YXRXGBYzSHU7AcVtdyoNrdnCeUoPrD8Lv7F8L6WBSg83Er75tju5MRIvan9Wtodo53CWws7nkswGYGdmQIxs2EeffA8iQkoWNbU985mNWweKHQ6v5PHhKyYRosu_MtRrUrHhrq-q0_fzyuSL-7TFS0GCFHP0nREFgmq70OV87WWd1YBEBcrYOvCHDiddC9DplN34pz-FCPIaqITk6UR1bSp9k2PSh484gzjuusE"/>
+</div>
+<span class="font-label-lg text-on-surface block truncate">Lox Bagel</span>
+<span class="text-label-sm text-on-surface-variant">$8.25</span>
+</div>
+<!-- Recent Item 3 -->
+<div class="shrink-0 w-32 bg-surface-container-low rounded-2xl p-sm text-center card-shadow active:scale-95 transition-transform">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-sm">
+<img alt="Fruit Cup" class="w-full h-full object-cover" data-alt="A vibrant fresh fruit cup with precisely cut pieces of kiwi, mango, and strawberries in a transparent premium container. The lighting is bright and airy, emphasizing the health-focused and fresh nature of the snack. Modern studio photography style with a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfO36tPPTuXs6It725VHDPcJhaeQRuk2e05UqwKWtH1A7bMpYwpygEyyQi5ZeAJC1WIRhoz92nZcnDaiowvgO5bpqbujA7vyAFkTczHHNiHxmA4s_45o_fipkmOe8R4nV0QJuKJRzaJamDUnRpL8bBo6w2GqC4r0dlo3XtcRbOBAnJZTZGGcpo0HbX1J2G4Km2pypR3M_SXaRrOcnHc6dmMSa0GJwG7M4GQ89Ri8Xr5DC2ULVDpeiK82CRDIRAVNDKbqYkidE-WOw"/>
+</div>
+<span class="font-label-lg text-on-surface block truncate">Fruit Mix</span>
+<span class="text-label-sm text-on-surface-variant">$5.50</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-20 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        function switchTab(tab) {
+            const cafesTab = document.getElementById('tab-cafes');
+            const mealsTab = document.getElementById('tab-meals');
+            const cafesContent = document.getElementById('content-cafes');
+            const mealsContent = document.getElementById('content-meals');
+
+            if (tab === 'cafes') {
+                cafesTab.classList.add('tab-active', 'text-primary');
+                cafesTab.classList.remove('text-on-surface-variant');
+                mealsTab.classList.remove('tab-active', 'text-primary');
+                mealsTab.classList.add('text-on-surface-variant');
+                cafesContent.classList.remove('hidden');
+                mealsContent.classList.add('hidden');
+            } else {
+                mealsTab.classList.add('tab-active', 'text-primary');
+                mealsTab.classList.remove('text-on-surface-variant');
+                cafesTab.classList.remove('tab-active', 'text-primary');
+                cafesTab.classList.add('text-on-surface-variant');
+                mealsContent.classList.remove('hidden');
+                cafesContent.classList.add('hidden');
+            }
+        }
+
+        // Simple animation logic for the cards when scrolled into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-shadow').forEach(card => {
+            card.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-500');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

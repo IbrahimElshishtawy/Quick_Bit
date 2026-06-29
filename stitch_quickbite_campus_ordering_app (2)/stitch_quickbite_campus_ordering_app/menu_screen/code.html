@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5f1900",
+                    "surface-container-high": "#e8e8ea",
+                    "primary-fixed-dim": "#ffb59d",
+                    "secondary-fixed": "#ffddb6",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#00677e",
+                    "secondary": "#845400",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-container": "#feb246",
+                    "primary-container": "#ff6b35",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "surface": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "surface-container": "#eeeef0",
+                    "background": "#f9f9fc",
+                    "surface-container-low": "#f3f3f6",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary": "#ab3500",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#594139",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-tertiary-container": "#003744",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-container": "#6f4600",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3133",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "outline-variant": "#e1bfb5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00a7cb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9fc;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-shadow {
+            shadow: 0px 4px 20px rgba(0,0,0,0.04);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar (from JSON guidance) -->
+<header class="sticky top-0 w-full z-50 bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-md h-16 w-full">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 transition-transform">arrow_back</button>
+<div class="flex flex-col items-center">
+<h1 class="font-display-lg text-[18px] font-bold text-primary dark:text-primary-fixed-dim">QuickBite</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Central Park Café</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young adult with a friendly expression, set against a soft-focus office background. The lighting is bright and clean, emphasizing a high-end corporate aesthetic. The overall color palette is composed of soft whites and neutral tones, aligning with a premium and modern user interface design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg5DNYiu-Gm0Rsvm4HmvtsdKGXpteB7iMMZ28Vx2_lOtSOo-xsa8CGGxbMbqTw084mJmnkw1zyeCDiaSayHQJgMIfI7QPal7dSbCM84ehp0L01szGsI-hRwcQhwoR6F9RJcds3zqt-PGgqpB2aho8ekvfq7kGBqHvyaEbbF5w4kDOa9QGo-LR5S7jtz47rdbhnpClrkxUaNBmgaHb8kXau0F5N_MUZu1jhCo8tv2FQ0EHncN-9t7Z_4E44qBHWq7pPehiZuJlRpAk"/>
+</div>
+</header>
+<main class="pb-32 px-md">
+<!-- Hero Section -->
+<section class="mt-md mb-xl">
+<div class="relative h-48 w-full rounded-[24px] overflow-hidden shadow-lg">
+<img alt="Cafe Interior" class="w-full h-full object-cover" data-alt="An elegant, sun-drenched cafe interior with minimalist wooden furniture and lush green plants. Large windows allow bright natural light to fill the space, creating a warm and welcoming atmosphere. The aesthetic is clean and modern, featuring a palette of soft whites, warm wood tones, and vibrant natural greens, perfectly reflecting a premium lifestyle brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoz7MtT_Jd2Fj4Sco9sKdRGSTRw1GxdGPow4SOj9jAPrTtcdGY4bNKH2g3Me-zRoDiu_s8ac6NxL-HepaYlxec4kmphM0yBeBQzeXVGWo2lYyRyD_iFWOlJtk0S3BF4MVLWsWtA8wt7EsFy5xzX9kPHcbovAcFDCESo3qlxfoGacERmIF8AibItckVBKm59aJE-w9zD2WxrNL03GuFupmQmDgDB0d5_2mkQQJERwYZt765tG1bAAAIHnCjvPHlywFUZO2foZuEpJo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-lg">
+<span class="inline-block px-sm py-xs bg-primary text-white font-label-sm text-label-sm rounded-lg mb-xs w-max">Open Now</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-white">Central Park Café</h2>
+<p class="font-body-md text-white/80">Artisan Coffee &amp; Gourmet Brunch</p>
+</div>
+</div>
+</section>
+<!-- Category Scroll -->
+<nav class="flex gap-sm overflow-x-auto no-scrollbar mb-xl -mx-md px-md">
+<button class="whitespace-nowrap px-lg py-sm bg-primary text-white rounded-full font-label-lg text-label-lg shadow-sm">All Menu</button>
+<button class="whitespace-nowrap px-lg py-sm bg-surface-container-low text-on-surface-variant rounded-full font-label-lg text-label-lg hover:bg-surface-container-high transition-colors">Signature Coffee</button>
+<button class="whitespace-nowrap px-lg py-sm bg-surface-container-low text-on-surface-variant rounded-full font-label-lg text-label-lg hover:bg-surface-container-high transition-colors">Fresh Pastries</button>
+<button class="whitespace-nowrap px-lg py-sm bg-surface-container-low text-on-surface-variant rounded-full font-label-lg text-label-lg hover:bg-surface-container-high transition-colors">Breakfast Bowls</button>
+</nav>
+<!-- Menu List -->
+<section class="space-y-md">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-md">Popular Items</h3>
+<!-- Menu Item 1 -->
+<div class="group flex bg-white rounded-[24px] p-sm shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all duration-200">
+<div class="w-32 h-32 rounded-[18px] overflow-hidden flex-shrink-0">
+<img alt="Latte Art" class="w-full h-full object-cover" data-alt="A close-up shot of a beautifully crafted latte with intricate heart-shaped foam art in a minimalist ceramic cup. The lighting is soft and directional, highlighting the rich texture of the coffee and the silky milk foam. The color palette is warm and inviting, featuring creamy beiges and rich espresso browns, set against a clean white marble tabletop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQE8u1Mwlsjfmw-i6jDa7o6LOlwDH5IHR_pknUn-fTu-diFbr13qb5sSoeS6jWUeIE8Gsp-E6nF4bpB_wJ1781SiAcQK5o10-hcbjtAnSQUwSQYWee3rkQy7UtYFJe9tFUREM5dq2vnd5TYnl9uA2HfOWlsS4SkmhmfPgunvGQeCvJZIqoX--Ug5gDgB5daMxbn1QeUs180HsQUsRmbMSxq9z-CBZGrTufckNniQg6ZMhOqf9geqXUWD6V9r4LcF2oB6aFrNTFRpY"/>
+</div>
+<div class="flex flex-col justify-between p-sm flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-title-md text-title-md text-on-surface">Oat Milk Latte</h4>
+<span class="font-title-md text-title-md text-primary">$5.50</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-xs line-clamp-2">Double shot of premium espresso with creamy steamed oat milk.</p>
+</div>
+<div class="flex justify-end">
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-80 active:scale-90 transition-all" onclick="addToCart('Oat Milk Latte', 5.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="group flex bg-white rounded-[24px] p-sm shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all duration-200">
+<div class="w-32 h-32 rounded-[18px] overflow-hidden flex-shrink-0">
+<img alt="Croissant" class="w-full h-full object-cover" data-alt="A golden-brown, flaky almond croissant served on a minimalist white ceramic plate. The lighting is bright and high-key, casting soft shadows that emphasize the many crisp layers of the pastry. The style is modern and premium, using a palette of golden ambers, soft creams, and pristine whites to evoke a sense of high-quality, artisan baking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm9n7k9w2O-uIZgg0pG94NkIuBP5iLEzH-m4h7HAwYLIHLXpJZtSLiqiEJDjRXK5Pc4uxYc3bVJsXLmhe6gnZV9tVWshEQAPxusXqNqPuStqoRv0EsuqIfGadu0zy-35omouYbwXu8YN6vjP3-aSyTmYkYdvQnNXbUAiUkOKFRjhTqsh9UnVXf7Y8kMJweQ4gwv2ahzb7w2l2M0Wz5mLtyOvzGOw5JUWdSWHQiW0lOsI7gOVeJCpJQ2dic2uyNIfGlNeR3DRIDjVY"/>
+</div>
+<div class="flex flex-col justify-between p-sm flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-title-md text-title-md text-on-surface">Almond Croissant</h4>
+<span class="font-title-md text-title-md text-primary">$4.75</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-xs line-clamp-2">Buttery, flaky pastry topped with toasted almonds and powdered sugar.</p>
+</div>
+<div class="flex justify-end">
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-80 active:scale-90 transition-all" onclick="addToCart('Almond Croissant', 4.75)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="group flex bg-white rounded-[24px] p-sm shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all duration-200">
+<div class="w-32 h-32 rounded-[18px] overflow-hidden flex-shrink-0">
+<img alt="Avocado Toast" class="w-full h-full object-cover" data-alt="A vibrant, modern presentation of avocado toast on thick-cut sourdough bread, garnished with red pepper flakes and microgreens. The lighting is crisp and natural, highlighting the textures of the mashed avocado and crusty bread. The color palette is dominated by fresh greens, warm browns, and bright white highlights, creating a healthy and premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvrP52cobHYcweeilWn1u8uJq2dpJFGGlgVnF2JffWSh2_brl0uVf_XOpJLLdYFcDzhToItH5tV2T3gRULOfnvTvMHSU1tMnwFa1dWUelzp8TDDu8EE6ntqPnvmghJZkv9Ore2ykWprvHlspNCZ4Vm4ERY994d0YBoabeZxZk5GpVLnO_bilceekYqCNXAGvWIAbkTLAtfz8gmgX_HpJAsSnmgiZDsO3v0412LOtCPeeWafo3cOLUl6AVjppZDT_4YCOOOFVMB-7w"/>
+</div>
+<div class="flex flex-col justify-between p-sm flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-title-md text-title-md text-on-surface">Avocado Sourdough</h4>
+<span class="font-title-md text-title-md text-primary">$12.00</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-xs line-clamp-2">Smashed avocado, chili flakes, and micro-greens on toasted sourdough.</p>
+</div>
+<div class="flex justify-end">
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-80 active:scale-90 transition-all" onclick="addToCart('Avocado Sourdough', 12.00)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item 4 -->
+<div class="group flex bg-white rounded-[24px] p-sm shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all duration-200">
+<div class="w-32 h-32 rounded-[18px] overflow-hidden flex-shrink-0">
+<img alt="Açaí Bowl" class="w-full h-full object-cover" data-alt="A beautifully arranged açaí bowl in a minimalist ceramic dish, topped with fresh berries, granola, and a drizzle of honey. The lighting is bright and cheerful, accentuating the deep purple of the açaí and the vibrant colors of the fruit toppings. The overall style is clean and energetic, using a palette of deep berries, bright yellows, and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuYwQ0J4LcmHMPK3M1Oek5q9ePmYAJhLMB-OBmHrV4jC4Jhz7ZPTFXD5cYD4sNqIuinwwjGPGdEC8mzwL-2adMZBT35drnz6HAM0FcIsQ7KGoBUl6IcUh68L5FO61PsBBpCFl8ZtsBzzCw3lxRExCxK1--y5so2Dp0RkI0l4MHqhZ07DqeTbg8dcU6fn8BNI50FcHgxILFhPpVdQR3cEDY6ZV_GV4IVz7zI7ruKm9lqiyosascsaaOogSy-njs6EmhYuVAzK_J6vY"/>
+</div>
+<div class="flex flex-col justify-between p-sm flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-title-md text-title-md text-on-surface">Berry Bliss Bowl</h4>
+<span class="font-title-md text-title-md text-primary">$10.50</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-xs line-clamp-2">Açaí base topped with house granola, fresh strawberries, and wild honey.</p>
+</div>
+<div class="flex justify-end">
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-80 active:scale-90 transition-all" onclick="addToCart('Berry Bliss Bowl', 10.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (from JSON guidance) -->
+<nav class="fixed bottom-0 w-full z-40 rounded-t-xl bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-20 pb-safe w-full">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- View Cart Sticky Bar -->
+<div class="fixed bottom-[88px] left-md right-md z-50 transform translate-y-32 transition-transform duration-300 ease-out" id="cartBar">
+<button class="w-full bg-primary text-white rounded-2xl h-16 px-lg flex items-center justify-between shadow-lg hover:brightness-110 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-md">
+<div class="bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center font-bold" id="itemCount">0</div>
+<span class="font-title-md text-title-md">View Cart</span>
+</div>
+<span class="font-title-lg text-title-lg" id="cartTotal">$0.00</span>
+</button>
+</div>
+<script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            total += price;
+            updateCartUI();
+            
+            // Haptic feedback simulation
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(10);
+            }
+        }
+
+        function updateCartUI() {
+            const cartBar = document.getElementById('cartBar');
+            const itemCount = document.getElementById('itemCount');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length > 0) {
+                cartBar.classList.remove('translate-y-32');
+                itemCount.innerText = cart.length;
+                cartTotal.innerText = `$${total.toFixed(2)}`;
+            }
+        }
+
+        // Add small scroll listener to slightly blur header more or hide/show elements
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

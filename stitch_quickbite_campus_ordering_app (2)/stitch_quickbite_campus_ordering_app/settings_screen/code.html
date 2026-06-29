@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .switch-checkbox:checked + .switch-track { background-color: #ff6b35; }
+        .switch-checkbox:checked + .switch-track .switch-thumb { transform: translateX(20px); background-color: white; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#5f1900",
+                      "surface-container-high": "#e8e8ea",
+                      "primary-fixed-dim": "#ffb59d",
+                      "secondary-fixed": "#ffddb6",
+                      "surface-dim": "#dadadc",
+                      "tertiary": "#00677e",
+                      "secondary": "#845400",
+                      "inverse-primary": "#ffb59d",
+                      "surface-container-highest": "#e2e2e5",
+                      "secondary-container": "#feb246",
+                      "primary-container": "#ff6b35",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#832600",
+                      "on-tertiary-fixed-variant": "#004e60",
+                      "secondary-fixed-dim": "#ffb95a",
+                      "surface": "#f9f9fc",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#59d5fb",
+                      "surface-bright": "#f9f9fc",
+                      "on-primary-fixed": "#390c00",
+                      "outline": "#8d7168",
+                      "surface-container": "#eeeef0",
+                      "background": "#f9f9fc",
+                      "surface-container-low": "#f3f3f6",
+                      "on-tertiary-fixed": "#001f28",
+                      "primary": "#ab3500",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#b5ebff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1a1c1e",
+                      "surface-variant": "#e2e2e5",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#594139",
+                      "inverse-on-surface": "#f0f0f3",
+                      "on-secondary-fixed": "#2a1800",
+                      "on-tertiary-container": "#003744",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#ffdbd0",
+                      "surface-tint": "#ab3500",
+                      "on-secondary-container": "#6f4600",
+                      "on-background": "#1a1c1e",
+                      "inverse-surface": "#2f3133",
+                      "on-secondary-fixed-variant": "#643f00",
+                      "outline-variant": "#e1bfb5",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#00a7cb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "2xl": "48px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar Shell -->
+<header class="sticky top-0 w-full z-50 bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-md h-16">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 active:scale-95 transition-all">arrow_back</button>
+<h1 class="font-title-lg text-title-lg text-on-surface">Settings</h1>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdC-2yeRDnP-jvjrbjl8gnQI1tAnbv-zwB5X397zYSCd-wG3mIr6DFkw7UT95jSje-NqPJYF8l-ucSxbSv1Hs40TzoZRo-GfiOWuyc_91mXrNg0EBVAqByUsK1HlmTwFrQXXFQ7tyP_XNGx_uX8qWxBf9bA55hFkhIoBxZYrCoqtsKrUO55gL9Su7BeVGN1KW9OBfVMwH_R3co5iAryYGmglgdKaXGkVQEyTVMb-l2fevNWvfNEZzqtW0JTUgMSrulHvFHxILcrw8"/>
+</div>
+</header>
+<main class="px-md mt-lg space-y-xl">
+<!-- Account Preview Card -->
+<section class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center gap-md">
+<div class="w-14 h-14 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">person</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface">Alex Rivera</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">alex.rivera@campus.edu</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</section>
+<!-- Preference Settings Group -->
+<div class="space-y-sm">
+<h3 class="font-label-lg text-label-lg text-primary uppercase tracking-wider ml-xs">Preferences</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<!-- Theme Toggle -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer" onclick="toggleTheme()">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+<span class="font-body-lg text-body-lg text-on-surface">Theme</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-lg text-label-lg text-on-surface-variant" id="theme-label">Light</span>
+<div class="relative inline-block w-11 h-6 transition duration-200 ease-in-out rounded-full bg-surface-container-highest cursor-pointer">
+<input class="absolute opacity-0 w-0 h-0 switch-checkbox" id="theme-toggle-input" type="checkbox"/>
+<label class="switch-track block w-11 h-6 rounded-full bg-surface-container-highest cursor-pointer transition-colors" for="theme-toggle-input">
+<span class="switch-thumb absolute left-1 top-1 bg-on-surface-variant w-4 h-4 rounded-full transition-transform duration-200 ease-in-out"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-surface-variant mx-md"></div>
+<!-- Language Selector -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+<span class="font-body-lg text-body-lg text-on-surface">Language</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-label-lg text-on-surface-variant">English (US)</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notifications Settings Group -->
+<div class="space-y-sm">
+<h3 class="font-label-lg text-label-lg text-primary uppercase tracking-wider ml-xs">Notifications</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center justify-between p-md">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Push Notifications</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Get alerts for order status</span>
+</div>
+<div class="relative inline-block w-11 h-6 transition duration-200 ease-in-out rounded-full bg-surface-container-highest cursor-pointer">
+<input checked="" class="absolute opacity-0 w-0 h-0 switch-checkbox" type="checkbox"/>
+<label class="switch-track block w-11 h-6 rounded-full bg-primary-container cursor-pointer transition-colors">
+<span class="switch-thumb absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ease-in-out translate-x-[20px]"></span>
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-surface-variant mx-md"></div>
+<div class="flex items-center justify-between p-md">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Promotion Alerts</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Weekly deals and campus offers</span>
+</div>
+<div class="relative inline-block w-11 h-6 transition duration-200 ease-in-out rounded-full bg-surface-container-highest cursor-pointer">
+<input class="absolute opacity-0 w-0 h-0 switch-checkbox" type="checkbox"/>
+<label class="switch-track block w-11 h-6 rounded-full bg-surface-container-highest cursor-pointer transition-colors">
+<span class="switch-thumb absolute left-1 top-1 bg-on-surface-variant w-4 h-4 rounded-full transition-transform duration-200 ease-in-out"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Security & Info Group -->
+<div class="space-y-sm">
+<h3 class="font-label-lg text-label-lg text-primary uppercase tracking-wider ml-xs">Security &amp; Support</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+<span class="font-body-lg text-body-lg text-on-surface">Privacy &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="h-[1px] bg-surface-variant mx-md"></div>
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+<span class="font-body-lg text-body-lg text-on-surface">About QuickBite</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="h-[1px] bg-surface-variant mx-md"></div>
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-body-lg text-body-lg text-error">Sign Out</span>
+</div>
+</div>
+</div>
+</div>
+<!-- App Branding/Version -->
+<div class="flex flex-col items-center justify-center py-xl opacity-50">
+<span class="font-display-lg text-[24px] font-bold text-primary">QuickBite</span>
+<span class="font-label-sm text-label-sm">Version 2.4.0 (Build 1082)</span>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl shadow-lg flex justify-around items-center h-20 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const input = document.getElementById('theme-toggle-input');
+            const label = document.getElementById('theme-label');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                input.checked = false;
+                label.innerText = 'Light';
+            } else {
+                html.classList.add('dark');
+                input.checked = true;
+                label.innerText = 'Dark';
+            }
+        }
+
+        // Initialize state
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('theme-toggle-input');
+            input.addEventListener('change', toggleTheme);
+        });
+    </script>
+</body></html>

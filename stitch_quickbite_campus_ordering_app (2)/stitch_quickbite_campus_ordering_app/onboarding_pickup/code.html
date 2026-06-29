@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickBite Onboarding - Pickup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-container": "#5f1900",
+                  "surface-container-high": "#e8e8ea",
+                  "primary-fixed-dim": "#ffb59d",
+                  "secondary-fixed": "#ffddb6",
+                  "surface-dim": "#dadadc",
+                  "tertiary": "#00677e",
+                  "secondary": "#845400",
+                  "inverse-primary": "#ffb59d",
+                  "surface-container-highest": "#e2e2e5",
+                  "secondary-container": "#feb246",
+                  "primary-container": "#ff6b35",
+                  "on-error-container": "#93000a",
+                  "on-primary-fixed-variant": "#832600",
+                  "on-tertiary-fixed-variant": "#004e60",
+                  "secondary-fixed-dim": "#ffb95a",
+                  "surface": "#f9f9fc",
+                  "error": "#ba1a1a",
+                  "on-secondary": "#ffffff",
+                  "tertiary-fixed-dim": "#59d5fb",
+                  "surface-bright": "#f9f9fc",
+                  "on-primary-fixed": "#390c00",
+                  "outline": "#8d7168",
+                  "surface-container": "#eeeef0",
+                  "background": "#f9f9fc",
+                  "surface-container-low": "#f3f3f6",
+                  "on-tertiary-fixed": "#001f28",
+                  "primary": "#ab3500",
+                  "surface-container-lowest": "#ffffff",
+                  "tertiary-fixed": "#b5ebff",
+                  "on-error": "#ffffff",
+                  "on-surface": "#1a1c1e",
+                  "surface-variant": "#e2e2e5",
+                  "on-tertiary": "#ffffff",
+                  "on-surface-variant": "#594139",
+                  "inverse-on-surface": "#f0f0f3",
+                  "on-secondary-fixed": "#2a1800",
+                  "on-tertiary-container": "#003744",
+                  "on-primary": "#ffffff",
+                  "primary-fixed": "#ffdbd0",
+                  "surface-tint": "#ab3500",
+                  "on-secondary-container": "#6f4600",
+                  "on-background": "#1a1c1e",
+                  "inverse-surface": "#2f3133",
+                  "on-secondary-fixed-variant": "#643f00",
+                  "outline-variant": "#e1bfb5",
+                  "error-container": "#ffdad6",
+                  "tertiary-container": "#00a7cb"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "md": "16px",
+                  "sm": "8px",
+                  "xs": "4px",
+                  "lg": "24px",
+                  "xl": "32px",
+                  "2xl": "48px"
+          },
+          "fontFamily": {
+                  "display-lg": ["Inter"],
+                  "title-md": ["Inter"],
+                  "label-lg": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "body-md": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "title-lg": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-sm": ["Inter"]
+          },
+          "fontSize": {
+                  "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                  "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                  "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .onboarding-canvas {
+      height: 100dvh;
+      max-width: 480px;
+      margin: 0 auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+    }
+    .image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(180deg, #FFF9F7 0%, #FFFFFF 100%);
+      padding: 24px;
+    }
+    .content-container {
+      padding: 32px 24px;
+      background-color: #ffffff;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
+    }
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .dot {
+      height: 8px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .dot-inactive {
+      width: 8px;
+      background-color: #E2E2E5;
+    }
+    .dot-active {
+      width: 24px;
+      background-color: #ab3500;
+    }
+    .cta-button {
+      background-color: #ab3500;
+      color: white;
+      height: 56px;
+      border-radius: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: transform 0.1s active;
+    }
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+    .illustration-blob {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(255,255,255,0) 70%);
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low">
+<main class="onboarding-canvas relative shadow-2xl">
+<!-- Top App Bar (Simplified for Onboarding) -->
+<header class="flex justify-between items-center px-lg h-16 w-full z-50">
+<div class="font-display-lg text-headline-lg-mobile font-bold text-primary">QuickBite</div>
+<button class="font-label-lg text-label-lg text-on-surface-variant hover:opacity-80 transition-opacity">Skip</button>
+</header>
+<!-- Visual Area -->
+<div class="image-container">
+<div class="illustration-blob"></div>
+<div class="relative z-10 w-full flex justify-center items-center">
+<!-- Main Illustration Image -->
+<div class="w-full max-w-[320px] rounded-3xl overflow-hidden shadow-xl transform rotate-1">
+<img alt="3D Illustration of a modern automated food pickup locker" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpla3luMigxPzC8P99rFvDvANDszNpwIt-8GyZkmi2y5oudoW-hMf5LhOLbAMWxo_0i4To63xTR3LM1i5WVJt9wYQ1tN0royh0zs8lJ8phRNWkFDEfB81uoAEv6mtbwfWJn_eikh1ImVBPBE9FwRrZau1wHrD9xii8tnc-J4hh1aLFTyEQEj7x8wtDweoL2H9ZsiOVmzmEoVPfZX9fn6guSAGqZQFqRhnF-jYeBP3JSMAhjnBbhNqxAC-YXF1Q4eag6gW3ClurmBY"/>
+</div>
+<!-- Floating Elements for Depth -->
+<div class="absolute -top-4 -right-4 bg-white p-3 rounded-2xl shadow-lg border border-surface-container-high animate-bounce" style="animation-duration: 3s;">
+<span class="material-symbols-outlined text-primary text-[32px]">qr_code_2</span>
+</div>
+<div class="absolute -bottom-2 -left-2 bg-white p-3 rounded-2xl shadow-lg border border-surface-container-high animate-pulse" style="animation-duration: 4s;">
+<span class="material-symbols-outlined text-secondary text-[28px]">schedule</span>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<section class="content-container">
+<!-- Progress Indicator -->
+<div class="progress-dots">
+<div class="dot dot-inactive"></div>
+<div class="dot dot-inactive"></div>
+<div class="dot dot-active"></div>
+</div>
+<!-- Typography -->
+<div class="space-y-md mb-xl text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+          Pick up without waiting.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed px-sm">
+          Receive a unique pickup code and collect your order at your selected time. No more queues!
+        </p>
+</div>
+<!-- Primary Action -->
+<div class="space-y-md">
+<button class="cta-button font-title-md text-title-md shadow-lg shadow-primary/20">
+          Get Started
+        </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant/60">
+          Step 3 of 3 • Powered by Modern Campus Tech
+        </p>
+</div>
+</section>
+</main>
+<script>
+    // Micro-interactions for button
+    const btn = document.querySelector('.cta-button');
+    btn.addEventListener('click', () => {
+      console.log('Onboarding Complete - Navigating to Home');
+      // Potential animation before transition
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span>';
+      setTimeout(() => {
+        // In a real app, this would route to the Home screen
+        btn.innerHTML = 'Welcome!';
+      }, 800);
+    });
+
+    // Subtle parallax or entrance animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.content-container');
+      content.style.opacity = '0';
+      content.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        content.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        content.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+      }, 100);
+    });
+  </script>
+</body></html>

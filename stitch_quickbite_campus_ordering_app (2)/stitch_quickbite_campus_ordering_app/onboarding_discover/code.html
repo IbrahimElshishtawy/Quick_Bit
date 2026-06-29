@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickBite Onboarding - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#5f1900",
+                        "surface-container-high": "#e8e8ea",
+                        "primary-fixed-dim": "#ffb59d",
+                        "secondary-fixed": "#ffddb6",
+                        "surface-dim": "#dadadc",
+                        "tertiary": "#00677e",
+                        "secondary": "#845400",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container-highest": "#e2e2e5",
+                        "secondary-container": "#feb246",
+                        "primary-container": "#ff6b35",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#832600",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "secondary-fixed-dim": "#ffb95a",
+                        "surface": "#f9f9fc",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#59d5fb",
+                        "surface-bright": "#f9f9fc",
+                        "on-primary-fixed": "#390c00",
+                        "outline": "#8d7168",
+                        "surface-container": "#eeeef0",
+                        "background": "#f9f9fc",
+                        "surface-container-low": "#f3f3f6",
+                        "on-tertiary-fixed": "#001f28",
+                        "primary": "#ab3500",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#b5ebff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1e",
+                        "surface-variant": "#e2e2e5",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#594139",
+                        "inverse-on-surface": "#f0f0f3",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-tertiary-container": "#003744",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-tint": "#ab3500",
+                        "on-secondary-container": "#6f4600",
+                        "on-background": "#1a1c1e",
+                        "inverse-surface": "#2f3133",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "outline-variant": "#e1bfb5",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00a7cb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9fc;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .onboarding-gradient {
+            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(0, 103, 126, 0.05) 0%, transparent 40%);
+        }
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="onboarding-gradient min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Onboarding Canvas (Suppressed Shell per "Destination Rule") -->
+<main class="w-full max-w-[430px] h-[844px] bg-surface-container-lowest rounded-[40px] shadow-2xl relative flex flex-col overflow-hidden border border-surface-variant/30">
+<!-- Header: Skip Button -->
+<header class="flex justify-end p-lg z-20">
+<button class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors py-sm px-md rounded-full bg-surface-container-low/50 backdrop-blur-sm">
+                Skip
+            </button>
+</header>
+<!-- Visual Content: 3D Illustration Placeholder -->
+<section class="flex-1 flex flex-col items-center justify-center px-lg pt-sm">
+<div class="relative w-full aspect-square flex items-center justify-center floating">
+<!-- Using provided placeholder string for image -->
+<img alt="Campus Ordering 3D Illustration" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCapxMjTjhOlSaaCQzbHt8ZsTqYT2vQmwuTUanLjsiaUybyhtvezUFX9O3eN_ZoP4xFOyPf4V5ziNJmj-EZ-Pz_9m6u1aDq0xiteYysbZZKl5Ar_GjNU_tCWYvRIq6pNq3kPABOhXvtJ0fpHGsyD7aeLGlTpDxafjfcxVH0jqOVo0_BHB-KZnM9PlzAWKTKG0DC_RGxXqLwhrGR8E9ETs-n-sIdkZbN8Q7-DI2vtAJrvQ5YhrHi8_fgTr-Il90D2KovG_irPBlNUw"/>
+</div>
+</section>
+<!-- Text & Controls Area -->
+<section class="bg-surface-container-lowest p-lg pb-xl rounded-t-[40px] shadow-[0_-8px_40px_rgba(0,0,0,0.02)] z-10 flex flex-col gap-lg">
+<!-- Title and Subtitle -->
+<div class="flex flex-col gap-sm text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">
+                    Discover campus cafés
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-md">
+                    Find the best spots to grab a bite or a coffee across the entire campus.
+                </p>
+</div>
+<!-- Progress & Navigation -->
+<div class="flex flex-col gap-lg mt-md">
+<!-- Progress Indicator (3 dots, 1st active) -->
+<div class="flex justify-center items-center gap-xs">
+<div class="w-6 h-2 rounded-full bg-primary transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+</div>
+<!-- Next Button -->
+<div class="flex justify-center">
+<button class="group w-full max-w-[280px] h-14 bg-primary-container text-on-primary-container rounded-[24px] flex items-center justify-between px-6 shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all duration-200">
+<span class="font-title-md text-title-md">Next</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Subtle Ambient Elements -->
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-tertiary/5 rounded-full blur-[100px]"></div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nextBtn = document.querySelector('button.group');
+            const skipBtn = document.querySelector('header button');
+
+            // Simple click feedback
+            nextBtn.addEventListener('click', () => {
+                nextBtn.style.opacity = '0.7';
+                setTimeout(() => nextBtn.style.opacity = '1', 150);
+                console.log('Navigating to next onboarding step...');
+            });
+
+            skipBtn.addEventListener('click', () => {
+                console.log('Skipping onboarding...');
+            });
+
+            // Hover effects for progress dots
+            const dots = document.querySelectorAll('.flex.justify-center.items-center.gap-xs div');
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('mouseenter', () => {
+                    if (idx !== 0) dot.classList.add('bg-primary/40');
+                });
+                dot.addEventListener('mouseleave', () => {
+                    if (idx !== 0) dot.classList.remove('bg-primary/40');
+                });
+            });
+        });
+    </script>
+</body></html>

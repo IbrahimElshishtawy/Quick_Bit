@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Create Account | QuickBite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5f1900",
+                    "surface-container-high": "#e8e8ea",
+                    "primary-fixed-dim": "#ffb59d",
+                    "secondary-fixed": "#ffddb6",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#00677e",
+                    "secondary": "#845400",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-container": "#feb246",
+                    "primary-container": "#ff6b35",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "surface": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "surface-container": "#eeeef0",
+                    "background": "#f9f9fc",
+                    "surface-container-low": "#f3f3f6",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary": "#ab3500",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#594139",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-tertiary-container": "#003744",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-container": "#6f4600",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3133",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "outline-variant": "#e1bfb5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00a7cb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #f9f9fc;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .input-transition {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .password-strength-bar {
+        transition: width 0.4s ease, background-color 0.4s ease;
+      }
+      .glass-bg {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen text-on-surface">
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-lg py-2xl relative overflow-hidden">
+<!-- Background Atmospheric Element -->
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+<div class="w-full max-w-md flex flex-col gap-xl">
+<!-- Header Section -->
+<div class="flex flex-col gap-sm items-start">
+<div class="p-3 bg-primary-container rounded-xl mb-sm">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">Create Account</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Join QuickBite for the fastest campus delivery experience.</p>
+</div>
+<!-- Registration Form -->
+<form class="flex flex-col gap-md" id="registerForm">
+<!-- Full Name -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-1" for="fullName">Full Name</label>
+<input class="w-full h-12 px-md rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary input-transition text-body-lg placeholder:text-outline-variant" id="fullName" placeholder="Enter your full name" required="" type="text"/>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-1" for="email">Email</label>
+<input class="w-full h-12 px-md rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary input-transition text-body-lg placeholder:text-outline-variant" id="email" placeholder="name@campus.edu" required="" type="email"/>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-xs relative">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-1" for="password">Password</label>
+<div class="relative">
+<input class="w-full h-12 px-md rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary input-transition text-body-lg placeholder:text-outline-variant" id="password" placeholder="Create a strong password" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant active:scale-90 transition-transform" onclick="togglePassword('password')" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<!-- Strength Indicator -->
+<div class="mt-2 flex flex-col gap-1">
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full w-0 bg-outline password-strength-bar" id="strengthBar"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant" id="strengthText">Enter at least 8 characters</span>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-1" for="confirmPassword">Confirm Password</label>
+<div class="relative">
+<input class="w-full h-12 px-md rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary input-transition text-body-lg placeholder:text-outline-variant" id="confirmPassword" placeholder="Repeat your password" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant active:scale-90 transition-transform" onclick="togglePassword('confirmPassword')" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="mt-md h-14 bg-primary text-on-primary font-title-md text-title-md rounded-xl shadow-lg active:scale-95 transition-all hover:opacity-90 flex items-center justify-center gap-sm" type="submit">
+                    Sign Up
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-md">
+<div class="flex-grow h-[1px] bg-outline-variant/30"></div>
+<span class="font-label-sm text-label-sm text-outline-variant">OR</span>
+<div class="flex-grow h-[1px] bg-outline-variant/30"></div>
+</div>
+<!-- Social Login -->
+<button class="h-14 border border-outline-variant rounded-xl flex items-center justify-center gap-md font-title-md text-title-md text-on-surface active:bg-surface-container-low transition-colors">
+<svg fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+                Continue with Google
+            </button>
+<!-- Footer -->
+<p class="text-center font-body-md text-body-md text-on-surface-variant">
+                Already have an account? 
+                <a class="text-primary font-title-md hover:underline" href="#">Login</a>
+</p>
+</div>
+</main>
+<!-- App-like Floating Elements -->
+<div class="fixed bottom-0 left-0 w-full p-lg pointer-events-none">
+<div class="max-w-md mx-auto flex justify-center">
+<div class="glass-bg p-4 rounded-2xl shadow-xl flex items-center gap-sm border border-white/40 pointer-events-auto">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-lg text-label-lg">Zero-waste packaging included.</span>
+</div>
+</div>
+</div>
+<script>
+        // Password visibility toggle
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling.querySelector('span');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        // Password strength logic
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+
+        passwordInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            let strength = 0;
+            
+            if (val.length > 7) strength += 25;
+            if (/[A-Z]/.test(val)) strength += 25;
+            if (/[0-9]/.test(val)) strength += 25;
+            if (/[^A-Za-z0-9]/.test(val)) strength += 25;
+
+            strengthBar.style.width = strength + '%';
+
+            if (strength === 0) {
+                strengthBar.className = 'h-full w-0 bg-outline-variant password-strength-bar';
+                strengthText.innerText = 'Enter at least 8 characters';
+                strengthText.className = 'font-label-sm text-label-sm text-outline-variant';
+            } else if (strength <= 25) {
+                strengthBar.style.backgroundColor = '#ba1a1a'; // error
+                strengthText.innerText = 'Weak password';
+                strengthText.className = 'font-label-sm text-label-sm text-error';
+            } else if (strength <= 75) {
+                strengthBar.style.backgroundColor = '#feb246'; // secondary-container
+                strengthText.innerText = 'Moderate strength';
+                strengthText.className = 'font-label-sm text-label-sm text-secondary';
+            } else {
+                strengthBar.style.backgroundColor = '#00a7cb'; // tertiary-container
+                strengthText.innerText = 'Strong security';
+                strengthText.className = 'font-label-sm text-label-sm text-tertiary';
+            }
+        });
+
+        // Form submission animation
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Creating Account...';
+            btn.classList.add('opacity-80', 'pointer-events-none');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Welcome!';
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-tertiary');
+            }, 2000);
+        });
+    </script>
+</body></html>

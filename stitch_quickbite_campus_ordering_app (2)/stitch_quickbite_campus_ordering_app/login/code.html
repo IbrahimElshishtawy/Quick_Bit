@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>QuickBite | Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5f1900",
+                    "surface-container-high": "#e8e8ea",
+                    "primary-fixed-dim": "#ffb59d",
+                    "secondary-fixed": "#ffddb6",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#00677e",
+                    "secondary": "#845400",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-container": "#feb246",
+                    "primary-container": "#ff6b35",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "surface": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "surface-container": "#eeeef0",
+                    "background": "#f9f9fc",
+                    "surface-container-low": "#f3f3f6",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary": "#ab3500",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#594139",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-tertiary-container": "#003744",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-container": "#6f4600",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3133",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "outline-variant": "#e1bfb5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00a7cb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 2px #ab3500;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center overflow-x-hidden">
+<!-- Auth Background Ambient Decor -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-primary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[60vw] h-[60vw] bg-tertiary-container/5 rounded-full blur-[80px]"></div>
+</div>
+<!-- Main Content Container (Mobile Focus) -->
+<main class="relative z-10 w-full max-w-md px-lg py-xl flex flex-col min-h-screen">
+<!-- Header Section: Logo & Welcome -->
+<header class="flex flex-col items-center mb-xl animate-fade-in">
+<div class="w-24 h-24 mb-md">
+<img alt="QuickBite Logo" class="w-full h-full object-contain rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKpZhIKQtJDv_Y3y4DbHd2Pwx7HoIAEcj7WxhCTzenfhXyqRnw6iUr0wORG9mrIbqDzakqCGkDBcBZ5mrN3N6nci1GP8SGTTG-aZZN0z99zDMFsdandGkASS-mrFGWyn6ixHXdICpBe-2VAt09t-MtVS6dMHQegyxZG6S6nVVF5msmGlWBmXsyQ1U21CJ3cabeUnn4RJFQUjy9pnrMvMXrrqdl7YIDVouWiuMByVjVT4ubv96RTd3tkPyP5l_QjuleIL75_PAwCI4"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-center mb-xs">Welcome Back!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Log in to your campus dining account</p>
+</header>
+<!-- Form Section -->
+<section class="space-y-md">
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-xs" for="email">Email</label>
+<div class="relative group">
+<input class="w-full h-14 px-md bg-surface-container-low border-2 border-error text-on-surface font-body-lg text-body-lg rounded-xl focus:outline-none focus:ring-0 transition-all" id="email" placeholder="alex.rivera@campus.edu" type="email" value="alex.rivera@campus"/>
+<div class="absolute right-md top-1/2 -translate-y-1/2 text-error">
+<span class="material-symbols-outlined">error</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-error px-xs">Invalid email format</p>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-xs" for="password">Password</label>
+<div class="relative group">
+<input class="w-full h-14 px-md bg-surface-container-low border-0 text-on-surface font-body-lg text-body-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all shadow-sm" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary active:scale-90 transition-all" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<div class="flex justify-end">
+<a class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity" href="#">Forgot Password?</a>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-xl shadow-lg active:scale-95 transition-transform mt-md flex items-center justify-center gap-sm">
+                Login
+                <span class="material-symbols-outlined text-[20px]">login</span>
+</button>
+</section>
+<!-- Divider -->
+<div class="flex items-center my-xl gap-md">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">or continue with</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<!-- Social Login Section -->
+<section class="space-y-sm">
+<button class="w-full h-14 bg-white border border-outline-variant text-on-surface font-title-md text-title-md rounded-xl flex items-center justify-center gap-md hover:bg-surface-container-lowest active:scale-95 transition-all shadow-sm">
+<svg height="20" viewbox="0 0 24 24" width="20">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                Continue with Google
+            </button>
+<button class="w-full h-14 bg-black text-white font-title-md text-title-md rounded-xl flex items-center justify-center gap-md active:scale-95 transition-all shadow-sm">
+<svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20">
+<path d="M17.05 20.28c-.96.00-1.76-.32-2.4-.32s-1.35.32-2.33.32c-1.23 0-2.37-.71-3.32-2.06C7.05 15.42 6.13 11.67 8.05 9.4c.95-1.12 2.11-1.78 3.38-1.78.96 0 1.76.62 2.4.62s1.44-.62 2.4-.62c1.05 0 1.95.53 2.56 1.41-2.12 1.25-1.77 3.94.36 4.79-.44 1.1-.99 2.19-1.93 3.52-.51.72-.94.96-1.17.96zm-2.65-13.43c.00-1.28 1.05-2.32 2.34-2.32.06 1.28-1.04 2.39-2.34 2.32z"></path>
+</svg>
+                Continue with Apple
+            </button>
+</section>
+<!-- Footer Spacer -->
+<div class="flex-grow"></div>
+<!-- Registration Footer -->
+<footer class="mt-auto py-lg text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-primary font-title-md text-title-md ml-xs hover:underline" href="#">Sign Up</a>
+</p>
+</footer>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple animation trigger for entry
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('scale-[1.01]');
+                });
+                input.addEventListener('blur', () => {
+                    input.parentElement.classList.remove('scale-[1.01]');
+                });
+            });
+
+            // Handle Login click ripple effect or feedback
+            const loginBtn = document.querySelector('button.bg-primary');
+            loginBtn.addEventListener('click', function(e) {
+                // Mock behavior
+                this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+                setTimeout(() => {
+                    this.innerHTML = 'Login <span class="material-symbols-outlined text-[20px]">login</span>';
+                }, 2000);
+            });
+        });
+    </script>
+<style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+    </style>
+</body></html>

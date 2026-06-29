@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickBite Splash Screen</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#5f1900",
+                        "surface-container-high": "#e8e8ea",
+                        "primary-fixed-dim": "#ffb59d",
+                        "secondary-fixed": "#ffddb6",
+                        "surface-dim": "#dadadc",
+                        "tertiary": "#00677e",
+                        "secondary": "#845400",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container-highest": "#e2e2e5",
+                        "secondary-container": "#feb246",
+                        "primary-container": "#ff6b35",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#832600",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "secondary-fixed-dim": "#ffb95a",
+                        "surface": "#f9f9fc",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#59d5fb",
+                        "surface-bright": "#f9f9fc",
+                        "on-primary-fixed": "#390c00",
+                        "outline": "#8d7168",
+                        "surface-container": "#eeeef0",
+                        "background": "#f9f9fc",
+                        "surface-container-low": "#f3f3f6",
+                        "on-tertiary-fixed": "#001f28",
+                        "primary": "#ab3500",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#b5ebff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1e",
+                        "surface-variant": "#e2e2e5",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#594139",
+                        "inverse-on-surface": "#f0f0f3",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-tertiary-container": "#003744",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-tint": "#ab3500",
+                        "on-secondary-container": "#6f4600",
+                        "on-background": "#1a1c1e",
+                        "inverse-surface": "#2f3133",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "outline-variant": "#e1bfb5",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00a7cb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        @keyframes float-ui {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-pulse-logo {
+            animation: pulse-soft 3s ease-in-out infinite;
+        }
+
+        .animate-float-illustration {
+            animation: float-ui 4s ease-in-out infinite;
+        }
+
+        .animate-fade-in {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+
+        /* Loading Dots Animation */
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ab3500;
+            display: inline-block;
+            animation: dot-pulse 1.4s infinite ease-in-out both;
+        }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes dot-pulse {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        body {
+            background-color: #F8F9FA;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Splash Screen Container -->
+<main class="relative flex flex-col items-center justify-between min-h-screen w-full max-w-[430px] mx-auto overflow-hidden bg-[#F8F9FA] px-lg pt-2xl pb-xl">
+<!-- Header / Logo Area -->
+<div class="flex flex-col items-center z-10 animate-fade-in" style="animation-delay: 0.2s;">
+<div class="animate-pulse-logo mb-md">
+<img alt="QuickBite Logo" class="w-32 h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKpZhIKQtJDv_Y3y4DbHd2Pwx7HoIAEcj7WxhCTzenfhXyqRnw6iUr0wORG9mrIbqDzakqCGkDBcBZ5mrN3N6nci1GP8SGTTG-aZZN0z99zDMFsdandGkASS-mrFGWyn6ixHXdICpBe-2VAt09t-MtVS6dMHQegyxZG6S6nVVF5msmGlWBmXsyQ1U21CJ3cabeUnn4RJFQUjy9pnrMvMXrrqdl7YIDVouWiuMByVjVT4ubv96RTd3tkPyP5l_QjuleIL75_PAwCI4"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile text-on-surface tracking-tight">QuickBite</h1>
+<p class="font-body-lg text-on-surface-variant mt-xs opacity-70">Swift Campus Dining</p>
+</div>
+<!-- Central Illustration -->
+<div class="relative w-full flex justify-center items-center z-0 py-lg animate-float-illustration">
+<div class="relative w-[320px] h-[320px] flex items-center justify-center">
+<!-- Background soft glow -->
+<div class="absolute w-[280px] h-[280px] bg-primary/5 rounded-full blur-3xl"></div>
+<!-- Main 3D Delivery Illustration -->
+<img alt="Delivery Illustration" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqiWQhQz_ApdvTc1s3Shi9269xjqifzQ24sqm9oA1MYfselC3EwsACxgk3cxLvJ3O-I1IY9sbUR8InsHB6ntGuJhB4K9Dl6nJRUSTKC6V0X_FnilYLW-dCRqGwUeEhuDx0dUjVENqjxUxwWQQqaMPixbGklY7TmK9hksh3XjWEShR-PP08YY4QxcIniaYcooljHuIyE-g5FmWEg6d4dS7mfEXqX3TyUM9yeGpEzftepTglqQq7qesCrhRk-9RcvzsE-oSfClHxHwI"/>
+</div>
+</div>
+<!-- Footer / Loading Status -->
+<div class="flex flex-col items-center w-full z-10 animate-fade-in" style="animation-delay: 0.8s;">
+<!-- Loading Indicator -->
+<div class="flex items-center gap-2 mb-sm">
+<span class="loading-dot"></span>
+<span class="loading-dot"></span>
+<span class="loading-dot"></span>
+</div>
+<span class="font-label-lg text-on-surface-variant uppercase tracking-widest opacity-60">
+                Loading Deliciousness
+            </span>
+<!-- Bottom Brand Bar -->
+<div class="mt-2xl flex items-center gap-xs opacity-40">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm">Safe &amp; Secure Campus Delivery</span>
+</div>
+</div>
+</main>
+<!-- Implicit Transition Logic -->
+<script>
+        // Micro-interaction: Subtle parallax on mouse/touch move
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 45;
+            const y = (window.innerHeight / 2 - e.pageY) / 45;
+            const illustration = document.querySelector('.animate-float-illustration img');
+            if (illustration) {
+                illustration.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+
+        // Simulate transition to next screen after delay
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // In a real app, this would trigger navigation
+                console.log("Navigating to Dashboard...");
+                // document.body.style.opacity = '0';
+                // document.body.style.transition = 'opacity 0.8s ease-in-out';
+            }, 3500);
+        });
+    </script>
+</body></html>

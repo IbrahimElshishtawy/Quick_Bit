@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickBite - Café Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#5f1900",
+                      "surface-container-high": "#e8e8ea",
+                      "primary-fixed-dim": "#ffb59d",
+                      "secondary-fixed": "#ffddb6",
+                      "surface-dim": "#dadadc",
+                      "tertiary": "#00677e",
+                      "secondary": "#845400",
+                      "inverse-primary": "#ffb59d",
+                      "surface-container-highest": "#e2e2e5",
+                      "secondary-container": "#feb246",
+                      "primary-container": "#ff6b35",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#832600",
+                      "on-tertiary-fixed-variant": "#004e60",
+                      "secondary-fixed-dim": "#ffb95a",
+                      "surface": "#f9f9fc",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#59d5fb",
+                      "surface-bright": "#f9f9fc",
+                      "on-primary-fixed": "#390c00",
+                      "outline": "#8d7168",
+                      "surface-container": "#eeeef0",
+                      "background": "#f9f9fc",
+                      "surface-container-low": "#f3f3f6",
+                      "on-tertiary-fixed": "#001f28",
+                      "primary": "#ab3500",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#b5ebff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1a1c1e",
+                      "surface-variant": "#e2e2e5",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#594139",
+                      "inverse-on-surface": "#f0f0f3",
+                      "on-secondary-fixed": "#2a1800",
+                      "on-tertiary-container": "#003744",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#ffdbd0",
+                      "surface-tint": "#ab3500",
+                      "on-secondary-container": "#6f4600",
+                      "on-background": "#1a1c1e",
+                      "inverse-surface": "#2f3133",
+                      "on-secondary-fixed-variant": "#643f00",
+                      "outline-variant": "#e1bfb5",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#00a7cb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "2xl": "48px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden">
+<!-- Hero Header Section -->
+<header class="relative h-72 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-end modern campus cafe interior with warm oak wood textures, minimalist white marble countertops, and designer pendant lighting. The atmosphere is sophisticated yet cozy, featuring lush green indoor plants and large floor-to-ceiling windows letting in soft natural morning light. The color palette is clean, dominated by whites, light greys, and warm sunset orange accents in the seating upholstery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL8TpcbChDSJjGKQtcdoJFdEvOgajdZocRCQhNUqhC90MEYYFvOBbfu_B1p2g_T2BpqDy5sIRkC8-XR7MH4OlQJTg9RNEQO4ma-yUrJUgrsN27EF0OfAyC9xtpIhvMIyhlpSWY0EzB5euhEPv6MwB8fvj1zO2NXu1Z_UpsgqYELa34kZeVgJNBujTSplk3rOvxXIAKLbvYS-uRxKSMYyhGlo7ExXAR8JfXTG9ksnfgiwwp7i1zsTW5KYJZ3Xuu9ibHAAIH3pC3bMU"/>
+<!-- Scrim for readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"></div>
+<!-- Floating Actions -->
+<div class="absolute top-0 left-0 right-0 flex justify-between items-center p-md z-10">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface/20 backdrop-blur-md text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface/20 backdrop-blur-md text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="relative -mt-8 bg-surface rounded-t-3xl min-h-screen px-md pb-32">
+<!-- Info Section -->
+<section class="pt-lg">
+<div class="flex justify-between items-start mb-xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">The Oak &amp; Bean</h1>
+<div class="flex items-center gap-xs bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="font-label-lg text-label-lg">Open until 9:00 PM</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-lg text-label-lg">8-12 min away</span>
+</div>
+<p class="text-on-surface-variant font-body-lg text-body-lg mb-lg">
+                Premium artisanal coffee and house-made pastries served in a modern campus setting. Perfect for study sessions or quick midday breaks.
+            </p>
+</section>
+<!-- Menu Tabs (Horizontal Scroll) -->
+<section class="mb-xl -mx-md px-md overflow-x-auto no-scrollbar flex gap-sm items-center">
+<button class="whitespace-nowrap px-lg py-2 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-md transition-all active:scale-95">
+                Breakfast
+            </button>
+<button class="whitespace-nowrap px-lg py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-highest transition-all active:scale-95">
+                Lunch
+            </button>
+<button class="whitespace-nowrap px-lg py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-highest transition-all active:scale-95">
+                Drinks
+            </button>
+<button class="whitespace-nowrap px-lg py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-highest transition-all active:scale-95">
+                Snacks
+            </button>
+<button class="whitespace-nowrap px-lg py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-highest transition-all active:scale-95">
+                Pastries
+            </button>
+</section>
+<!-- Popular Items Section -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-title-lg text-title-lg text-on-surface">Popular Choice</h2>
+<button class="text-primary font-label-lg text-label-lg">View All</button>
+</div>
+<div class="grid grid-cols-1 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a creamy flat white coffee with exquisite latte art, sitting on a rustic wooden table. The lighting is soft and warm, highlighting the velvety texture of the milk foam against the deep amber of the espresso. In the background, there is a hint of a modern cafe environment with clean white surfaces and sunset orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBCBD0Kg6UXIK57QjnVNBJYbCeZb1IUhtdivTKOBipGP3lW2MHP9yKG_fcfKZ0VVHiOcYfvxufnSQqvOA5OMPN_iI5ZGa4gNfTmK1fbAao38wCf_c3Os4p3JRM7ET1dr9u_9jG8jCaZtkU4hLAlJIkc3xte4xGvSP9WdxzEt65Xn4RMIp8pXix5wqLSbd-fxfu7-CEWdVCXBIzGoesZbe9pedQ4OUt5XkVEmis8Nsg7_s4o2XtM3FqCeBoU_f82GGNKvRbWQ9nAuI"/>
+<div class="absolute top-3 right-3 bg-white/80 backdrop-blur-md rounded-full px-3 py-1 font-title-md text-title-md text-on-surface-variant">
+                            $4.50
+                        </div>
+</div>
+<div class="p-md flex justify-between items-end">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-xs">Oak Signature Flat White</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Double shot, velvety microfoam</p>
+</div>
+<button class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm hover:opacity-90 active:scale-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" data-alt="A gourmet avocado toast with a perfectly poached egg on top, sprinkled with red pepper flakes and microgreens. The toast sits on a minimalist matte ceramic plate. The overall aesthetic is bright and high-key, emphasizing freshness and premium quality, with a clean architectural background characteristic of a modern corporate cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkMYuIBM0WfUvnnXWolrgnxI2-K4j-Utd2066CfPZ7Bmkp2yfPwsEhvxcVCXbneehkscZoYbcBCHzeSQOZPf2ouBuVm5tlAFxxy5CghsAIofhx6CvGh1iInYKcUI2hdqC7y6yhcs08p56dmClUCrgdMFyNCLe3lcib8KhbLU1Lj1eOtCY4Hbhuq9HND0PEeBzSq2_rTRmz5MI6HydcMfP1x0cC3LtOPNDoa0BKsE3SymjQGyDVYLBY3Ue3Hi1trpxNSmj5viLRUvw"/>
+<div class="absolute top-3 right-3 bg-white/80 backdrop-blur-md rounded-full px-3 py-1 font-title-md text-title-md text-on-surface-variant">
+                            $12.00
+                        </div>
+</div>
+<div class="p-md flex justify-between items-end">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-xs">Smashed Avocado Toast</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Poached egg, chili flakes, sourdough</p>
+</div>
+<button class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm hover:opacity-90 active:scale-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Card 3 (Menu Item Horizontal Layout Variant) -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-sm flex items-center gap-md active:scale-[0.98] transition-transform">
+<img class="w-24 h-24 rounded-xl object-cover" data-alt="A golden-brown flaky croissant displayed on a clean white marble surface. The lighting is crisp and clear, highlighting the layered pastry texture. The style is minimalist and premium, aligning with a high-end campus cafe brand identity featuring muted tones and high-contrast visuals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARROWozXV9YmYIA_5_smZnY-Ym0ehH7xzfFX2CIy9jY0hF2cwuW0sEPEhxGIvtaoU3TScmiyZIusvsr5TFT-kBUK9ZF-s7WD-9iNXVX89YvVUpvQygz4HzTFBy6UjtjunZeITV0zC-Zs-E_zS_pe4fFS1-I94M5NSYVJ_aICxJLsZeWROfHnGSD5Zu9YVoTNxH0gAYvsbY92I9N6mqmphfZ0OQNudHO5zsQNAvY8Y-kfnZNeyv_dNik5MJT81V2Xqb2tMHn3ulHs0"/>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface mb-xs">Almond Croissant</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm mb-xs">House-made, twice baked</p>
+<span class="font-title-md text-title-md text-primary">$5.50</span>
+</div>
+<button class="w-10 h-10 rounded-xl border-2 border-primary-container text-primary flex items-center justify-center active:scale-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Bottom Nav (Filter Applied: Visible as top-level destination) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-20 pb-safe w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Cart) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+<div class="relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-primary font-bold">2</span>
+</div>
+</button>
+<script>
+        // Micro-interaction for favorite button
+        const favBtn = document.querySelector('[data-icon="favorite"]').parentElement;
+        favBtn.addEventListener('click', () => {
+            const icon = favBtn.querySelector('.material-symbols-outlined');
+            const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+            icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+            icon.classList.toggle('text-error', !isFilled);
+        });
+
+        // Simple tab switching logic
+        const tabs = document.querySelectorAll('section button.whitespace-nowrap');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+                    t.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                });
+                tab.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                tab.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+            });
+        });
+    </script>
+</body></html>
