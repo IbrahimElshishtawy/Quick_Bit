@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../food_details/domain/entities/customization_option.dart';
 import '../../domain/entities/cart_item_entity.dart';
 import '../../domain/entities/order_entity.dart';
 import 'cart_event.dart';
@@ -17,25 +18,48 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<UpdateOrderStatusEvent>(_onUpdateOrderStatus);
   }
 
+  bool _areExtrasEqual(List<CustomizationOption> a, List<CustomizationOption> b) {
+    if (a.length != b.length) return false;
+    final aIds = a.map((e) => e.id).toSet();
+    final bIds = b.map((e) => e.id).toSet();
+    return aIds.length == bIds.length && aIds.containsAll(bIds);
+  }
+
   void _onAddItem(AddCartItemEvent event, Emitter<CartState> emit) {
-    final existingIndex = _cartItems.indexWhere((item) => item.foodItem.id == event.foodItem.id);
+    final existingIndex = _cartItems.indexWhere((item) =>
+        item.foodItem.id == event.foodItem.id &&
+        item.eggStyle == event.eggStyle &&
+        _areExtrasEqual(item.selectedExtras, event.selectedExtras));
+
     if (existingIndex >= 0) {
       final oldItem = _cartItems[existingIndex];
       _cartItems[existingIndex] = oldItem.copyWith(quantity: oldItem.quantity + event.quantity);
     } else {
-      _cartItems.add(CartItemEntity(foodItem: event.foodItem, quantity: event.quantity));
+      _cartItems.add(CartItemEntity(
+        foodItem: event.foodItem,
+        quantity: event.quantity,
+        eggStyle: event.eggStyle,
+        selectedExtras: event.selectedExtras,
+      ));
     }
     emit(CartOperationSuccess(items: List.from(_cartItems), activeOrder: state.activeOrder));
     emit(CartUpdated(items: List.from(_cartItems), activeOrder: state.activeOrder));
   }
 
   void _onRemoveItem(RemoveCartItemEvent event, Emitter<CartState> emit) {
-    _cartItems.removeWhere((item) => item.foodItem.id == event.foodItem.id);
+    _cartItems.removeWhere((item) =>
+        item.foodItem.id == event.cartItem.foodItem.id &&
+        item.eggStyle == event.cartItem.eggStyle &&
+        _areExtrasEqual(item.selectedExtras, event.cartItem.selectedExtras));
     emit(CartUpdated(items: List.from(_cartItems), activeOrder: state.activeOrder));
   }
 
   void _onUpdateQuantity(UpdateCartItemQuantityEvent event, Emitter<CartState> emit) {
-    final index = _cartItems.indexWhere((item) => item.foodItem.id == event.foodItem.id);
+    final index = _cartItems.indexWhere((item) =>
+        item.foodItem.id == event.cartItem.foodItem.id &&
+        item.eggStyle == event.cartItem.eggStyle &&
+        _areExtrasEqual(item.selectedExtras, event.cartItem.selectedExtras));
+
     if (index >= 0) {
       if (event.quantity <= 0) {
         _cartItems.removeAt(index);
@@ -58,7 +82,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     final tax = subtotal * 0.08;
     final total = subtotal + tax;
 
-    // Generate random 4-digit code and order ID
     final random = Random();
     final pickupCode = 'QB-${random.nextInt(9000) + 1000}';
     final orderId = 'ORD-${DateTime.now().millisecondsSinceEpoch.toString().substring(8)}';
@@ -74,7 +97,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       orderTime: DateTime.now(),
     );
 
-    _cartItems.clear(); // Clear cart after placing order
+    _cartItems.clear();
     emit(OrderPlacedSuccess(items: const [], order: newOrder));
   }
 

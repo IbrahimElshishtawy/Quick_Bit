@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/assets.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../../../../injection_container.dart';
-import '../../domain/usecases/is_onboarding_completed.dart';
-import 'onboarding_page.dart';
-import '../../../auth/presentation/pages/login_page.dart';
+import 'package:quickbit/core/constants/assets.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/core/usecases/usecase.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/onboarding/domain/usecases/is_onboarding_completed.dart';
+import 'package:quickbit/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:quickbit/features/login/presentation/pages/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

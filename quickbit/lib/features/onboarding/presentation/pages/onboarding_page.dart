@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/assets.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../../../../injection_container.dart';
-import '../../../auth/presentation/pages/login_page.dart';
-import '../cubit/onboarding_cubit.dart';
-import '../cubit/onboarding_state.dart';
+import 'package:quickbit/core/constants/assets.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/injection_container.dart';
+import 'package:quickbit/features/login/presentation/pages/login_page.dart';
+import 'package:quickbit/features/onboarding/presentation/cubit/onboarding_cubit.dart';
+import 'package:quickbit/features/onboarding/presentation/cubit/onboarding_state.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});

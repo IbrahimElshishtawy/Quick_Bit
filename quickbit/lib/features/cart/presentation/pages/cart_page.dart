@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/dimensions.dart';
-import '../bloc/cart_bloc.dart';
-import '../bloc/cart_event.dart';
-import '../bloc/cart_state.dart';
-import 'checkout_page.dart';
+import 'package:quickbit/core/constants/colors.dart';
+import 'package:quickbit/core/constants/dimensions.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_event.dart';
+import 'package:quickbit/features/cart/presentation/bloc/cart_state.dart';
+import 'package:quickbit/features/checkout/presentation/pages/checkout_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -72,8 +72,8 @@ class CartPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             child: Image.network(
                               item.foodItem.imageUrl,
-                              width: 64,
-                              height: 64,
+                              width: 72,
+                              height: 72,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -88,9 +88,22 @@ class CartPage extends StatelessWidget {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                                const SizedBox(height: 2),
+                                if (item.eggStyle != null)
+                                  Text(
+                                    'Style: ${item.eggStyle}',
+                                    style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.6), fontSize: 12),
+                                  ),
+                                if (item.selectedExtras.isNotEmpty)
+                                  Text(
+                                    'Extras: ${item.selectedExtras.map((e) => e.name).join(", ")}',
+                                    style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.6), fontSize: 12),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  '\$${item.foodItem.price.toStringAsFixed(2)}',
+                                  '\$${item.singleItemPrice.toStringAsFixed(2)}',
                                   style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -104,7 +117,7 @@ class CartPage extends StatelessWidget {
                                 onPressed: () {
                                   context.read<CartBloc>().add(
                                         UpdateCartItemQuantityEvent(
-                                          foodItem: item.foodItem,
+                                          cartItem: item,
                                           quantity: item.quantity - 1,
                                         ),
                                       );
@@ -119,7 +132,7 @@ class CartPage extends StatelessWidget {
                                 onPressed: () {
                                   context.read<CartBloc>().add(
                                         UpdateCartItemQuantityEvent(
-                                          foodItem: item.foodItem,
+                                          cartItem: item,
                                           quantity: item.quantity + 1,
                                         ),
                                       );
