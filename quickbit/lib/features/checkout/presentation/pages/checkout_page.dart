@@ -5,6 +5,7 @@ import 'package:quickbit/core/constants/dimensions.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_event.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_state.dart';
+import 'package:quickbit/features/checkout/presentation/widgets/payment_method_tile.dart';
 import 'package:quickbit/features/order_tracking/presentation/pages/order_tracking_page.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -65,7 +66,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Subtotal', style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.8))),
+                          Text('Subtotal', style: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.8))),
                           Text('\$${state.subtotal.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
                         ],
                       ),
@@ -73,7 +74,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Tax (8%)', style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.8))),
+                          Text('Tax (8%)', style: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.8))),
                           Text('\$${state.tax.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
                         ],
                       ),
@@ -99,22 +100,40 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: AppDimensions.sm),
-                _buildPaymentMethodOption(
+                PaymentMethodTile(
                   icon: Icons.badge,
                   title: 'Campus Meal Points',
                   subtitle: 'Balance: 120.50 Points',
+                  isSelected: _selectedPaymentMethod == 'Campus Meal Points',
+                  onTap: () {
+                    setState(() {
+                      _selectedPaymentMethod = 'Campus Meal Points';
+                    });
+                  },
                 ),
                 const SizedBox(height: AppDimensions.md),
-                _buildPaymentMethodOption(
+                PaymentMethodTile(
                   icon: Icons.credit_card,
                   title: 'Credit / Debit Card',
                   subtitle: 'Visa **** 4321',
+                  isSelected: _selectedPaymentMethod == 'Credit / Debit Card',
+                  onTap: () {
+                    setState(() {
+                      _selectedPaymentMethod = 'Credit / Debit Card';
+                    });
+                  },
                 ),
                 const SizedBox(height: AppDimensions.md),
-                _buildPaymentMethodOption(
+                PaymentMethodTile(
                   icon: Icons.apple,
                   title: 'Apple Pay',
                   subtitle: 'Quick & secure payment',
+                  isSelected: _selectedPaymentMethod == 'Apple Pay',
+                  onTap: () {
+                    setState(() {
+                      _selectedPaymentMethod = 'Apple Pay';
+                    });
+                  },
                 ),
                 const SizedBox(height: AppDimensions.xxl),
 
@@ -127,7 +146,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       foregroundColor: AppColors.onPrimary,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       elevation: 4,
-                      shadowColor: AppColors.primary.withOpacity(0.4),
+                      shadowColor: AppColors.primary.withValues(alpha: 0.4),
                     ),
                     onPressed: () {
                       context.read<CartBloc>().add(
@@ -144,66 +163,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildPaymentMethodOption({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-  }) {
-    final isSelected = _selectedPaymentMethod == title;
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedPaymentMethod = title;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.all(AppDimensions.md),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.outlineVariant,
-            width: isSelected ? 2 : 1,
-          ),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x04000000),
-              blurRadius: 10,
-              offset: Offset(0, 2),
-            )
-          ],
-        ),
-        child: Row(
-          children: [
-            Icon(icon, color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant, size: 28),
-            const SizedBox(width: AppDimensions.md),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.6), fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            if (isSelected)
-              const Icon(Icons.check_circle, color: AppColors.primary)
-            else
-              const Icon(Icons.radio_button_off, color: AppColors.outlineVariant),
-          ],
-        ),
       ),
     );
   }

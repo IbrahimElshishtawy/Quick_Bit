@@ -7,6 +7,7 @@ import 'package:quickbit/features/cart/domain/entities/order_entity.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_event.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_state.dart';
+import 'package:quickbit/features/order_tracking/presentation/widgets/order_status_stepper.dart';
 
 class OrderTrackingPage extends StatefulWidget {
   final OrderEntity order;
@@ -103,7 +104,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Text(
                         'Estimated Ready Time',
                         style: theme.textTheme.labelLarge?.copyWith(
-                          color: AppColors.onSurfaceVariant.withOpacity(0.6),
+                          color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -123,7 +124,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                             children: [
                               Text(
                                 'Order ID',
-                                style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.6), fontSize: 12),
+                                style: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.6), fontSize: 12),
                               ),
                               const SizedBox(height: 2),
                               Text(activeOrder.orderId, style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -134,7 +135,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                             children: [
                               Text(
                                 'Pickup Code',
-                                style: TextStyle(color: AppColors.onSurfaceVariant.withOpacity(0.6), fontSize: 12),
+                                style: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.6), fontSize: 12),
                               ),
                               const SizedBox(height: 2),
                               Text(
@@ -156,7 +157,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     margin: const EdgeInsets.only(bottom: AppDimensions.xl),
                     padding: const EdgeInsets.all(AppDimensions.lg),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryContainer.withOpacity(0.1),
+                      color: AppColors.primaryContainer.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(24),
                       border: Border.all(color: AppColors.primaryContainer, width: 1),
                     ),
@@ -189,28 +190,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: AppDimensions.md),
-                _buildTimelineStep(
-                  stepNumber: 0,
-                  title: 'Order Placed',
-                  subtitle: 'We have received your order.',
-                  isActive: _currentStep >= 0,
-                  isCompleted: _currentStep > 0,
-                ),
-                _buildTimelineStep(
-                  stepNumber: 1,
-                  title: 'Preparing Food',
-                  subtitle: 'The kitchen is preparing your meals.',
-                  isActive: _currentStep >= 1,
-                  isCompleted: _currentStep > 1,
-                ),
-                _buildTimelineStep(
-                  stepNumber: 2,
-                  title: 'Ready for Pickup',
-                  subtitle: 'Collect at student union locker station.',
-                  isActive: _currentStep >= 2,
-                  isCompleted: _currentStep > 2,
-                  isLast: true,
-                ),
+                OrderStatusStepper(currentStep: _currentStep),
                 const SizedBox(height: AppDimensions.xxl),
 
                 // Got it Button
@@ -235,88 +215,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildTimelineStep({
-    required int stepNumber,
-    required String title,
-    required String subtitle,
-    required bool isActive,
-    required bool isCompleted,
-    bool isLast = false,
-  }) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Left side indicators
-          Column(
-            children: [
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isCompleted
-                      ? AppColors.primary
-                      : (isActive ? AppColors.primaryContainer : AppColors.surfaceContainerHigh),
-                ),
-                child: Center(
-                  child: isCompleted
-                      ? const Icon(Icons.check, size: 14, color: Colors.white)
-                      : Text(
-                          (stepNumber + 1).toString(),
-                          style: TextStyle(
-                            color: isActive ? AppColors.onPrimaryContainer : AppColors.onSurfaceVariant,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-              ),
-              if (!isLast)
-                Expanded(
-                  child: VerticalDivider(
-                    color: isCompleted ? AppColors.primary : AppColors.outlineVariant,
-                    thickness: 2,
-                    indent: 4,
-                    endIndent: 4,
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(width: AppDimensions.md),
-
-          // Right side details
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: AppDimensions.lg),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: isActive ? AppColors.onSurface : AppColors.onSurfaceVariant.withOpacity(0.5),
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      color: isActive ? AppColors.onSurfaceVariant : AppColors.onSurfaceVariant.withOpacity(0.4),
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

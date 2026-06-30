@@ -7,6 +7,7 @@ import 'package:quickbit/features/shared_auth/bloc/auth_bloc.dart';
 import 'package:quickbit/features/shared_auth/bloc/auth_event.dart';
 import 'package:quickbit/features/shared_auth/bloc/auth_state.dart';
 import 'package:quickbit/features/login/presentation/pages/login_page.dart';
+import 'package:quickbit/features/profile/presentation/widgets/profile_menu_button.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -77,7 +78,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 email,
                                 style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.onSurfaceVariant.withOpacity(0.6),
+                                  color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                                 ),
                               ),
                             ],
@@ -94,11 +95,11 @@ class ProfilePage extends StatelessWidget {
                     style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: AppDimensions.sm),
-                  _buildProfileTile(icon: Icons.person_outline, title: 'Edit Profile', onTap: () {}),
-                  _buildProfileTile(icon: Icons.notifications_none, title: 'Notifications', onTap: () {}),
-                  _buildProfileTile(icon: Icons.payment_outlined, title: 'Payment Methods', onTap: () {}),
-                  _buildProfileTile(icon: Icons.history, title: 'Past Orders', onTap: () {}),
-                  _buildProfileTile(icon: Icons.help_outline, title: 'Help & Support', onTap: () {}),
+                  ProfileMenuButton(icon: Icons.person_outline, title: 'Edit Profile', onTap: () {}),
+                  ProfileMenuButton(icon: Icons.notifications_none, title: 'Notifications', onTap: () {}),
+                  ProfileMenuButton(icon: Icons.payment_outlined, title: 'Payment Methods', onTap: () {}),
+                  ProfileMenuButton(icon: Icons.history, title: 'Past Orders', onTap: () {}),
+                  ProfileMenuButton(icon: Icons.help_outline, title: 'Help & Support', onTap: () {}),
                   const SizedBox(height: AppDimensions.xl),
 
                   // Logout Button
@@ -129,25 +130,6 @@ class ProfilePage extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildProfileTile({
-    required IconData icon,
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: AppDimensions.sm),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: Colors.white,
-      elevation: 0,
-      child: ListTile(
-        leading: Icon(icon, color: AppColors.primary),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: AppColors.outlineVariant),
-        onTap: onTap,
       ),
     );
   }

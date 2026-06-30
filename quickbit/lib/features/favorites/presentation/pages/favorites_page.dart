@@ -4,7 +4,7 @@ import 'package:quickbit/core/constants/colors.dart';
 import 'package:quickbit/core/constants/dimensions.dart';
 import 'package:quickbit/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quickbit/features/home/presentation/cubit/home_state.dart';
-import 'package:quickbit/features/cafe_details/presentation/pages/cafe_details_page.dart';
+import 'package:quickbit/features/favorites/presentation/widgets/favorite_cafe_tile.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -30,19 +30,19 @@ class FavoritesPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.favorite_border, size: 80, color: AppColors.onSurfaceVariant.withOpacity(0.3)),
+                  Icon(Icons.favorite_border, size: 80, color: AppColors.onSurfaceVariant.withValues(alpha: 0.3)),
                   const SizedBox(height: AppDimensions.md),
                   Text(
                     'No favorites yet',
                     style: theme.textTheme.titleMedium?.copyWith(
-                      color: AppColors.onSurfaceVariant.withOpacity(0.6),
+                      color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Tap the heart icon on any café to add it here.',
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      color: AppColors.onSurfaceVariant.withOpacity(0.4),
+                      color: AppColors.onSurfaceVariant.withValues(alpha: 0.4),
                     ),
                   ),
                 ],
@@ -55,37 +55,7 @@ class FavoritesPage extends StatelessWidget {
             itemCount: favorites.length,
             itemBuilder: (context, index) {
               final cafe = favorites[index];
-              return Card(
-                margin: const EdgeInsets.only(bottom: AppDimensions.md),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                elevation: 0,
-                color: AppColors.surfaceContainerLow,
-                child: ListTile(
-                  contentPadding: const EdgeInsets.all(AppDimensions.sm),
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      cafe.imageUrl,
-                      width: 64,
-                      height: 64,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  title: Text(
-                    cafe.name,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text('${cafe.distance} • ${cafe.deliveryTime}'),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.primary),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => CafeDetailsPage(cafe: cafe),
-                      ),
-                    );
-                  },
-                ),
-              );
+              return FavoriteCafeTile(cafe: cafe);
             },
           );
         },

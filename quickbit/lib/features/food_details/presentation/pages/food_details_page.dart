@@ -7,6 +7,8 @@ import 'package:quickbit/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_event.dart';
 import 'package:quickbit/features/cart/presentation/bloc/cart_state.dart';
 import 'package:quickbit/features/food_details/domain/entities/customization_option.dart';
+import 'package:quickbit/features/food_details/presentation/widgets/style_selector.dart';
+import 'package:quickbit/features/food_details/presentation/widgets/extras_selector.dart';
 import 'package:quickbit/injection_container.dart';
 
 class FoodDetailsPage extends StatefulWidget {
@@ -155,7 +157,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                 fit: BoxFit.cover,
                               ),
                               Container(
-                                color: Colors.black.withOpacity(0.2),
+                                color: Colors.black.withValues(alpha: 0.2),
                               ),
                             ],
                           ),
@@ -220,7 +222,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                               Text(
                                 widget.item.description,
                                 style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.onSurfaceVariant.withOpacity(0.8),
+                                  color: AppColors.onSurfaceVariant.withValues(alpha: 0.8),
                                   height: 1.5,
                                 ),
                               ),
@@ -268,92 +270,24 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                               ],
 
                               // Required Style Option Group (e.g. Milk or Egg Style)
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    _styleGroup.title,
-                                    style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.secondaryContainer.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: const Text(
-                                      'Required',
-                                      style: TextStyle(
-                                        color: AppColors.onSecondaryContainer,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 11,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              StyleSelector(
+                                title: _styleGroup.title,
+                                options: _styleGroup.options,
+                                selectedStyle: _selectedStyle,
+                                onSelectedStyleChanged: (val) {
+                                  setState(() {
+                                    _selectedStyle = val;
+                                  });
+                                },
                               ),
-                              const SizedBox(height: AppDimensions.sm),
-                              ..._styleGroup.options.map((option) {
-                                final isSelected = _selectedStyle == option.name;
-                                return Container(
-                                  margin: const EdgeInsets.only(bottom: 8),
-                                  decoration: BoxDecoration(
-                                    color: isSelected ? Colors.white : AppColors.surfaceContainerLow,
-                                    borderRadius: BorderRadius.circular(16),
-                                    border: Border.all(
-                                      color: isSelected ? AppColors.primary : Colors.transparent,
-                                      width: 2,
-                                    ),
-                                  ),
-                                  child: RadioListTile<String>(
-                                    title: Text(
-                                      option.name,
-                                      style: const TextStyle(fontWeight: FontWeight.w600),
-                                    ),
-                                    value: option.name,
-                                    groupValue: _selectedStyle,
-                                    activeColor: AppColors.primary,
-                                    controlAffinity: ListTileControlAffinity.trailing,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        _selectedStyle = val;
-                                      });
-                                    },
-                                  ),
-                                );
-                              }),
                               const SizedBox(height: AppDimensions.md),
 
                               // Extras Group
-                              Text(
-                                'Add Extras',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                              ExtrasSelector(
+                                extraOptions: _extraOptions,
+                                selectedExtras: _selectedExtras,
+                                onToggleExtra: _toggleExtra,
                               ),
-                              const SizedBox(height: AppDimensions.sm),
-                              ..._extraOptions.map((option) {
-                                final isSelected = _selectedExtras.any((opt) => opt.id == option.id);
-                                return Container(
-                                  margin: const EdgeInsets.only(bottom: 8),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.surfaceContainerLow,
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                  child: CheckboxListTile(
-                                    title: Text(
-                                      option.name,
-                                      style: const TextStyle(fontWeight: FontWeight.w600),
-                                    ),
-                                    subtitle: Text(
-                                      '+\$${option.price.toStringAsFixed(2)}',
-                                      style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
-                                    ),
-                                    value: isSelected,
-                                    activeColor: AppColors.primary,
-                                    controlAffinity: ListTileControlAffinity.leading,
-                                    onChanged: (_) => _toggleExtra(option),
-                                  ),
-                                );
-                              }),
                             ],
                           ),
                         ),
@@ -369,7 +303,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
+                        color: Colors.black.withValues(alpha: 0.04),
                         blurRadius: 20,
                         offset: const Offset(0, -4),
                       )
@@ -423,7 +357,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               elevation: 4,
-                              shadowColor: AppColors.primary.withOpacity(0.2),
+                              shadowColor: AppColors.primary.withValues(alpha: 0.2),
                             ),
                             onPressed: () {
                               context.read<CartBloc>().add(
@@ -438,24 +372,25 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Icon(Icons.shopping_bag_outlined, size: 20),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'Add to Cart  •  \$${_totalPrice.toStringAsFixed(2)}',
-                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                                  const Icon(Icons.shopping_bag_outlined, size: 20),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Add to Cart  •  \$${_totalPrice.toStringAsFixed(2)}',
+                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
