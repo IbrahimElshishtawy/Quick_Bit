@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   void _submitLogin(BuildContext context) {
     if (_formKey.currentState?.validate() ?? false) {
       context.read<AuthBloc>().add(
-            AuthLoginSubmittedEvent(
+            AuthLoginEvent(
               email: _emailController.text.trim(),
               password: _passwordController.text.trim(),
             ),

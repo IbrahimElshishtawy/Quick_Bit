@@ -7,7 +7,6 @@ import 'package:quickbit/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quickbit/features/home/presentation/cubit/home_state.dart';
 import 'package:quickbit/features/home/presentation/widgets/home_header.dart';
 import 'package:quickbit/features/home/presentation/widgets/cafe_card.dart';
-import 'package:quickbit/features/cafe_details/presentation/pages/cafe_details_page.dart';
 import 'package:quickbit/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:quickbit/features/cart/presentation/pages/cart_page.dart';
 import 'package:quickbit/features/profile/presentation/pages/profile_page.dart';

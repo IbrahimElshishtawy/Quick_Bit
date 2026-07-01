@@ -391,8 +391,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             );
           },
         ),
-      ),
-    );
+      );
   }
 }
 
