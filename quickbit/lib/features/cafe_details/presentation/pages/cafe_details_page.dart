@@ -67,9 +67,21 @@ class _CafeDetailsPageState extends State<CafeDetailsPage> {
                           widget.cafe.imageUrl,
                           fit: BoxFit.cover,
                         ),
-                        // Dark overlay for visibility
+                        // Gradient overlay to blend image with background and keep headers readable
                         Container(
-                          color: Colors.black.withValues(alpha: 0.3),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.black.withValues(alpha: 0.4),
+                                Colors.black.withValues(alpha: 0.0),
+                                AppColors.background.withValues(alpha: 0.8),
+                                AppColors.background,
+                              ],
+                              stops: const [0.0, 0.4, 0.85, 1.0],
+                            ),
+                          ),
                         ),
                       ],
                     ),
