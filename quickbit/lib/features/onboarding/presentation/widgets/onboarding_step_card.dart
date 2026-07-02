@@ -21,48 +21,48 @@ class OnboardingStepCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.lg),
-      child: Column(
-        children: [
-          // Illustration Area with Glassmorphism shadow
-          Expanded(
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: 280,
-                    height: 280,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.4),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  Image.network(
-                    data.imageUrl,
-                    width: 260,
-                    height: 260,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.restaurant,
-                      size: 120,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ],
-              ),
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        // Background Image
+        Image.network(
+          data.imageUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => Container(
+            color: AppColors.primary.withValues(alpha: 0.1),
+            child: const Icon(
+              Icons.restaurant,
+              size: 120,
+              color: AppColors.primary,
             ),
           ),
-
-          // Title & Description
-          Column(
+        ),
+        // Dark gradient overlay for readability of elements on top
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black.withValues(alpha: 0.4),
+                Colors.black.withValues(alpha: 0.2),
+                Colors.black.withValues(alpha: 0.85),
+              ],
+              stops: const [0.0, 0.4, 1.0],
+            ),
+          ),
+        ),
+        // Text Content Overlay
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppDimensions.lg),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 data.title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: AppColors.onSurface,
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
                     ),
               ),
@@ -71,14 +71,14 @@ class OnboardingStepCard extends StatelessWidget {
                 data.description,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.onSurfaceVariant,
+                      color: Colors.white.withValues(alpha: 0.8),
                     ),
               ),
+              const SizedBox(height: 120), // Leave space at the bottom for indicators
             ],
           ),
-          const SizedBox(height: AppDimensions.lg),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

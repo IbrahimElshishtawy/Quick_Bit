@@ -17,28 +17,36 @@ class SplashIllustration extends StatelessWidget {
           child: child,
         );
       },
-      child: Container(
-        width: 280,
-        height: 280,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x0FFF6B35),
-              blurRadius: 40,
-              spreadRadius: 10,
-            )
-          ],
-        ),
-        child: Image.network(
-          AppAssets.splashIllustration,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => const Icon(
-            Icons.delivery_dining,
-            size: 150,
-            color: AppColors.primary,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.network(
+            AppAssets.splashIllustration,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Container(
+              color: AppColors.background,
+              child: const Icon(
+                Icons.delivery_dining,
+                size: 150,
+                color: AppColors.primary,
+              ),
+            ),
           ),
-        ),
+          // Dark gradient overlay for readability of elements on top
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withValues(alpha: 0.3),
+                  Colors.black.withValues(alpha: 0.1),
+                  Colors.black.withValues(alpha: 0.5),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

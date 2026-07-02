@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:quickbit/core/constants/colors.dart';
 import 'package:quickbit/core/usecases/usecase.dart';
 import 'package:quickbit/injection_container.dart';
 import 'package:quickbit/features/onboarding/domain/usecases/is_onboarding_completed.dart';
@@ -85,39 +84,34 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            color: AppColors.background,
-            gradient: RadialGradient(
-              center: Alignment(0.8, -0.8),
-              radius: 1.2,
-              colors: [
-                Color(0x14FF6B35),
-                Colors.transparent,
+      body: Stack(
+        children: [
+          // Background Illustration
+          Positioned.fill(
+            child: SplashIllustration(
+              floatAnimation: _floatAnimation,
+            ),
+          ),
+          // Foreground Content
+          SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Header / Logo Area
+                SplashLogo(
+                  fadeInAnimation: _fadeInAnimation,
+                  pulseAnimation: _pulseAnimation,
+                ),
+
+                // Spacer to keep logo at top and footer at bottom
+                const Spacer(),
+
+                // Footer / Loading Status
+                const SplashFooter(),
               ],
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Header / Logo Area
-              SplashLogo(
-                fadeInAnimation: _fadeInAnimation,
-                pulseAnimation: _pulseAnimation,
-              ),
-
-              // Central Illustration
-              SplashIllustration(
-                floatAnimation: _floatAnimation,
-              ),
-
-              // Footer / Loading Status
-              const SplashFooter(),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

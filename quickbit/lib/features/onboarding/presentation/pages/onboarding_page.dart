@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickbit/core/constants/assets.dart';
-import 'package:quickbit/core/constants/colors.dart';
 import 'package:quickbit/core/constants/dimensions.dart';
 import 'package:quickbit/injection_container.dart';
 import 'package:quickbit/features/login/presentation/pages/login_page.dart';
@@ -65,24 +64,29 @@ class _OnboardingPageState extends State<OnboardingPage> {
           final currentPage = cubit.currentPage;
 
           return Scaffold(
-            body: SafeArea(
-              child: Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: AppColors.background,
-                  gradient: RadialGradient(
-                    center: Alignment(0.8, -0.8),
-                    radius: 1.2,
-                    colors: [
-                      Color(0x14FF6B35),
-                      Colors.transparent,
-                    ],
+            body: Stack(
+              children: [
+                // Slide Views (Images as Background)
+                Positioned.fill(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: _slides.length,
+                    onPageChanged: (index) {
+                      cubit.setPageIndex(index);
+                    },
+                    itemBuilder: (context, index) {
+                      return OnboardingStepCard(data: _slides[index]);
+                    },
                   ),
                 ),
-                child: Column(
-                  children: [
-                    // Top Skip Button
-                    Padding(
+
+                // Top Title & Skip Button Overlay
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: SafeArea(
+                    child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppDimensions.lg,
                         vertical: AppDimensions.sm,
@@ -93,39 +97,33 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           Text(
                             'QuickBite',
                             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                  color: AppColors.primary,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
                           TextButton(
                             onPressed: () => cubit.completeOnboarding(),
-                            child: Text(
+                            child: const Text(
                               'Skip',
-                              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                    color: AppColors.onSurfaceVariant,
-                                  ),
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                ),
 
-                    // Slide Views
-                    Expanded(
-                      child: PageView.builder(
-                        controller: _pageController,
-                        itemCount: _slides.length,
-                        onPageChanged: (index) {
-                          cubit.setPageIndex(index);
-                        },
-                        itemBuilder: (context, index) {
-                          return OnboardingStepCard(data: _slides[index]);
-                        },
-                      ),
-                    ),
-
-                    // Bottom Navigation Area
-                    OnboardingIndicator(
+                // Bottom Navigation Area Overlay
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: SafeArea(
+                    child: OnboardingIndicator(
                       totalSteps: _slides.length,
                       currentStep: currentPage,
                       isLastStep: currentPage == _slides.length - 1,
@@ -140,9 +138,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         }
                       },
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           );
         },
